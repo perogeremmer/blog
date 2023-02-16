@@ -39,6 +39,7 @@ API juga yang mengolah dan menyaring misalnya ada flash sale, lo mau masukin bar
 Karena ada banyak kondisi di dalamnya, misalnya ada flash sale dan kuotanya cuma 10 barang. API ini yang akan jadi barrier untuk memeriksa sebenernya ini yang minta beli barang, barangnya beneran udah abis apa blom? Kalo udah abis maka pembeli ke-11 dan sesudahnya akan dapat pesan bahwa barangnya udah habis.
 
 ## Gimana cara jadi Backend Devloper?
+
 Ehm, matematika.
 
 ![Confused](https://media.tenor.com/hC-8vSSpzI8AAAAC/calculation-math.gif)
@@ -59,30 +60,31 @@ Ya gak gitu, maksudnya banyak case-case yang butuh perhitungan adanya di backend
 
 Ada juga kasus integrasi dimana lo harus memahami rumus bit 256 yang akan di konversi jadi 1, kemudian ditambahkan dengan bit sisa yang ada, biasanya ini kejadian di low level language untuk ngomong ke mesin.
 
-
 ## Terus harus belajar apa untuk ambil backend?
 
 Sebenernya ada banyak banget sih
 
 1. **Matematika** ➕
-   
+
    Sebenernya ini gak bisa ditawar sih, minimal ya, matematika bagian logika (premis) itu bisa deh, misalnya:
+
    ```
    Hari ini hujan
    Ani tidak pergi
 
    Hari ini hujan, artinya apa?
    ```
+
    Yep, **ani tidak pergi**. Matematika logika gini penting untuk jadi seorang backend devloper, soalnya lo bakalan ketemu kondisi-kondisi lainnya yang lebih kompleks.
 
    Kamu bisa minimal ngelatih beginian dengan terbiasa main puzzle, atau catur, intinya logika kamu harus bagus kalo mau mantep di backend. Permainan strategi kaya Age of Empire juga akan ngebantu otak kamu ngestimulus pengambilan keputusan, meskipun gak sesederhana di game ya kalo ngomongin backend 😆
 
 2. **Belajar dasar pemrograman** 📑
-   
+
    Gak cuma jadi seorang backend devloper, tapi dasar pemrograman itu udah makanan wajib kalo lo mau terjun ke pemrograman, masa iya mau jadi programmer gak bisa ngoding? Aneh lah bos.
 
    Iya gue tau, mungkin lo nanya apa aja sih dasar pemrograman?
-   
+
    - Syntax (Penulisan)
    - Variabel
    - Operator
@@ -91,7 +93,6 @@ Sebenernya ada banyak banget sih
    - Perulangan
    - Class & Fungsi
    - Object Oriented Programming
-
 
    Belajar studi kasus pembuatan aplikasi sederhana, misalnya Todo List,
 
@@ -102,7 +103,7 @@ Sebenernya ada banyak banget sih
    Nah kalo misalnya lo ngelamar jadi backend nantinya, banyak perusahaan yang ngasih lo studi kasus bikin table di database doang, abis itu lo bakalan ditanya pertanyaan-pertanyaan yang relate sama database, meskipun sekarang jenis database ada banyak, tapi hingga saat ini database yang paling umum dipake itu database tipe relasi (RDBMS - Relational Database Management System), misalnya MySQL.
 
    Apa aja yang harus dipelajari di MySQL?
-   
+
    - Table, Kolom dan tipenya
    - Query dasar table (CREATE, DROP, ALTER)
    - Query dasar data (SELECT, INSERT, UPDATE, DELETE)
