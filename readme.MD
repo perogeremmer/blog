@@ -7,8 +7,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="assets/hudya4.svg" alt="Logo" width="80" height="80">
+  <a href="https://github.com/perogeremmer/blog">
+    <img src="assets/hudya4.svg" alt="Logo" width="100" height="100">
   </a>
 
   <h3 align="center">Belajar Backend bareng <a href="https://twitter.com/perogeremmer">@perogeremmer</a></h3>
