@@ -1,4 +1,4 @@
-![github.com/perogeremmer](assets/cb5486f8-521d-4fb5-b6a1-db315c26156a.png)
+<img src="assets/cb5486f8-521d-4fb5-b6a1-db315c26156a.png" style="border-radius:10px;" />
 
 # Emang Backend Engineer Tuh Ngapain?
 
