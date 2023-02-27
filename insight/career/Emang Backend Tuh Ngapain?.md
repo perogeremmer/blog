@@ -43,6 +43,7 @@ Karena ada banyak kondisi di dalamnya, misalnya ada flash sale dan kuotanya cuma
 Ehm, matematika.
 
 ![Confused](https://media.tenor.com/hC-8vSSpzI8AAAAC/calculation-math.gif)
+> src: [tenor.com](https://tenor.com)
 
 ## Matematika? BENERAN? 🤯
 
