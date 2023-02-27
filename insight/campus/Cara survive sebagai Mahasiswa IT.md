@@ -1,4 +1,4 @@
-<img src="assets/cb5486f8-521d-4fb5-b6a1-db315c26156a.png" style="border-radius:10px;" />
+<img src="assets/baaf1ba4-9abb-4274-89ca-7713400c14af.png" style="border-radius:10px;" />
 
 # Cara survive sebagai mahasiswa IT 🤯
 
