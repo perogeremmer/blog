@@ -1,6 +1,18 @@
 <img src="assets/cb5486f8-521d-4fb5-b6a1-db315c26156a.png" style="border-radius:10px;" />
 
-# Emang Backend Engineer Tuh Ngapain?
+<br/>
+
+**Table of contents**
+
+- [Emang Backend Engineer Tuh Ngapain?](#emang-backend-engineer-tuh-ngapain)
+- [Backend Engineer / Developer](#backend-engineer--developer)
+- [Emang apa bedanya jalan di server sama client? 🤔](#emang-apa-bedanya-jalan-di-server-sama-client-)
+- [Gimana cara jadi Backend Devloper?](#gimana-cara-jadi-backend-devloper)
+- [Matematika? BENERAN? 🤯](#matematika-beneran-)
+- [Terus harus belajar apa untuk ambil backend?](#terus-harus-belajar-apa-untuk-ambil-backend)
+- [Apa lagi?](#apa-lagi)
+
+## Emang Backend Engineer Tuh Ngapain?
 
 Banyak mahasiswa yang sejujurnya pasti bingung, ketika ngeliat role backend engineer atau devloper. Sebenernya ini kerjaan ngapain sih? Karena kayanya belibet banget kalo diperhatiin sama kalian di [roadmap.sh](https://roadmap.sh/backend).
 
@@ -26,7 +38,7 @@ graph LR;
 
 Misalnya lo buka salah satu e-commerce dari aplikasi, nah aplikasi itu butuh data dari aplikasi yang berjalan server, nah aplikasi yang berjalan pada server akan mengambilkan data dari database sesuai permintaan pengguna.
 
-### Aplikasi yang berjalan di server? Apaan tuh? 🤔
+> Aplikasi yang berjalan di server? Apaan tuh? 🤔
 
 Namanya API atau application programming interface. Aplikasi ini adalah script yang menjadi barrier atau gerbang sebelum aplikasi e-commerce yang berbentuk aplikasi android/ios atau website meminta data sesuai kebutuhan dari database.
 
@@ -34,7 +46,7 @@ API ini menyaring informasi bahkan hak akses sebelum informasi yang dibutuhkan d
 
 API juga yang mengolah dan menyaring misalnya ada flash sale, lo mau masukin barang ke keranjang, atau lo mau bayar. Semua aktivitas ini dikirimkan dari aplikasi android/iOS kalian ke API dan akan disaring lalu diolah.
 
-#### Kenapa harus disaring? 🤔
+> Kenapa harus disaring? 🤔
 
 Karena ada banyak kondisi di dalamnya, misalnya ada flash sale dan kuotanya cuma 10 barang. API ini yang akan jadi barrier untuk memeriksa sebenernya ini yang minta beli barang, barangnya beneran udah abis apa blom? Kalo udah abis maka pembeli ke-11 dan sesudahnya akan dapat pesan bahwa barangnya udah habis.
 
@@ -55,7 +67,7 @@ Untuk apa kabur dari matematika? Math is fun! :smile:
 
 Matematika bakalan ngebantu kalian berpikir secara runtut, pragmatis, dan tepat. Soalnya, ngomongin backend itu berarti ngomongin logika yang tepat untuk menyelesaikan masalah.
 
-#### Lah berarti frontend atau mobile gak nyelesain masalah bang? 😕
+> Lah berarti frontend atau mobile gak nyelesain masalah bang? 😕
 
 Ya gak gitu, maksudnya banyak case-case yang butuh perhitungan adanya di backend, misalnya rumus perhitungan barang dimana barang itu ada diskon (ini sih masih kasus sederhana).
 

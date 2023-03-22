@@ -1,6 +1,22 @@
 <img src="assets/d114be61-bba7-4154-a31d-5810a2ed1bc0.png" style="border-radius:10px;" />
 
-# Cara pake Redis (yang mungkin aja ini udah benar)
+<br/>
+
+**Table of contents**
+
+- [Cara pake Redis (yang mungkin aja ini udah benar)](#cara-pake-redis-yang-mungkin-aja-ini-udah-benar)
+- [Step by step](#step-by-step)
+  - [1. Redis itu front-liner](#1-redis-itu-front-liner)
+  - [2. Penggunaan Redis Single Key (Strings)](#2-penggunaan-redis-single-key-strings)
+  - [3. Penggunaan Redis dengan List (multiple data)](#3-penggunaan-redis-dengan-list-multiple-data)
+  - [Fakta tentang notifikasi](#fakta-tentang-notifikasi)
+  - [4. Ngakalin data transaksi pake LIST](#4-ngakalin-data-transaksi-pake-list)
+  - [5. Gunakan konsep prefix yang tepat](#5-gunakan-konsep-prefix-yang-tepat)
+    - [Mid-identifier](#mid-identifier)
+    - [Last-identifier](#last-identifier)
+- [Catatan Terakhir](#catatan-terakhir)
+
+## Cara pake Redis (yang mungkin aja ini udah benar)
 
 Aneh banget ya kalo dari judul blognya, kaya berasa si paling pintar banget gue nulis ini.
 
@@ -26,11 +42,11 @@ Secara teori sih gitu, makanya kan gak semua hal di-cache, umumnya data yang dij
 
 Misalnya ada satu fitur untuk menghitung jumlah transaksi per-hari, daripada fitur tersebut terus-terusan nge-query data ke database untuk harian, mending kita query sekali ke database terus simpen ke cache. Sehingga kita bisa dapet hal yang sama tanpa perlu nge-query berulang-ulang.
 
-## Cara pake redis
+## Step by step
 
 Nah banyak yang baru kenal itu kaya bingung, redis apaan dah? Cara pakenya gimana dah? Let me show you how to redis yang mudah-mudahan, proper hehehe~ 🤣
 
-## 1. Redis itu front-liner
+### 1. Redis itu front-liner
 
 Redis bisa sangat bermanfaat, tapi sebenernya kebutuhannya apa sih? tbh sih ya banyak sebenernya, salah satunya ya mempercepat proses ketika ngambil data ke Database.
 
@@ -105,7 +121,7 @@ Jadi kita bisa nyimpen dictionary atau object pada sebuah data di redis.
 
 Biasanya kasus apaan sih bang untuk nyimpen data ginian? Paling gampang sih, report.
 
-### Hah? Gimana tuh bang?
+> Hah? Gimana tuh bang?
 
 Misalnya, anggaplah di aplikasi kita, kita bisa ngedata berapa jumlah transaksi di lokasi x selama periode bulan maret 2022.
 
@@ -126,7 +142,7 @@ GET report:lokasi_x:2023-01-02
 
 Nah tinggal kembaliin ke frontend, udah dah enak banget frontend tinggal ngolah di dalam chart 😎
 
-## 3. Penggunaan Redis dengan List (multiple data)
+### 3. Penggunaan Redis dengan List (multiple data)
 
 Nah ini nih, pasti kalian yang belajar programming gak asing sama `list` atau kita biasa sebut `array`. Nah di redis juga bisa kita pake ginian kasusnya apa? Paling gampang sih, notifikasi.
 
@@ -158,13 +174,13 @@ LRANGE user:notification:1 0 -1
 
 Jadi ketika user ingin menampilkan notifikasi, kita kaga perlu tuh repot-repot nyimpen ke DB, cukup simpen aja di redis.
 
-### Fun fact
+### Fakta tentang notifikasi
 
 Sadar gak sih kalian kalo buka aplikasi payment seperti OVO atau Gojek, bagian data notifikasinya gak bakalan nampilin data lama kalian, misalnya kaya tahun lalu. Paling gak nampilin notifikasi 30 hari belakang ini. Coba kalian buka pada halaman notifikasi, atau emang notifikasi saya yang kedikitan yah? Hehehe 😆
 
 Kenapa gitu? Soalnya emang dibatasin, sayang banget nyimpen data notifikasi kalian yang udah bertahun-tahun itu dan gak ada manfaatnya (it's sad but fact 🤣). Jadi cara mengakalinya adalah ya disimpen di redis, terus di set setiap 30 hari jadi hilang. Atau, karena ini bentuknya list, dia bakalan ngecek, kalo jumlahnya udah lebih dari 100 notifikasi, maka yang lebih dari 100 akan dihapus, jadi cuma nyimpen 100 notifikasi terakhir aja.
 
-## 4. Ngakalin data transaksi pake LIST
+### 4. Ngakalin data transaksi pake LIST
 
 Anggaplah gini, kalian dapet tantangan bikin sebuah program yang sifatnya temporary. Alias gak berjalan di server, tapi berjalan di sebuah lokasi (client-side) misalnya server untuk ujian computer based-test yang sifatnya offline untuk mempercepat proses. Kalian ditantang program tersebut berjalan pake PC (Standard desktop) atau micro-computer, misalnya Raspberry PI.
 
@@ -196,7 +212,7 @@ LRANGE results:1921681109 0 -1
 
 Mau pake list atau strings? Terserah kalian :) Masing-masing ada kelebihan dan kekurangan termasuk pas ngolah datanya.
 
-### Kenapa kita harus pake prefix tanggal begitu bang?
+> Kenapa kita harus pake prefix tanggal begitu bang?
 
 Soalnya redis kan beda cuy kaya SQL, SQL mah enak ya:
 
@@ -208,17 +224,20 @@ Kemudian masalah beres, tapi kan kita pake redis yah, jadi cara handlenya agak t
 
 Ya emang solusi ini gak cocok buat lo yang mageran, dan gamau ribet, tapi kalo concern-nya adalah **performa**. Cara ini bisa aja dilakukan, apalagi handling traffic di client (bukan server) yang gerakannya cepet dan minim resource, tentu cara ini dan redis adalah solusinya.
 
-## 5. Gunakan konsep prefix yang tepat
+### 5. Gunakan konsep prefix yang tepat
 
 Kita perlu membuat prefix yang tepat, tujuannya biar kita gampang identifikasi data yang kita butuhkan, menurut gue ada dua cara:
 
-### Mid-identifier
+#### Mid-identifier
+
 Prefix dibuat dengan minimal tiga kombinasi dimana id diletakkan ditengah atau setelah object/service yang utama. Contoh:
+
 ```bash
 {service/object}:{id}:{sub service/action}
 ```
 
 Misalnya:
+
 ```bash
 user:1:profile
 user:1:last-transaction
@@ -226,14 +245,16 @@ user:1:last-online
 user:1:online-status
 ```
 
-### Last-identifier
+#### Last-identifier
 
 Prefix dibuat dengan minimal tiga kombinasi dimana id selalu diletakkan di akhir dari seluruh kombinasi prefix. Contoh:
+
 ```bash
 {service/object}:{sub service/action}:{id}
 ```
 
 Misalnya:
+
 ```bash
 user:profile:1
 user:last-transaction:1
@@ -249,8 +270,9 @@ Mana yang bagus? Ya sama aja sih, tinggal pake salah satu yang kalian mau aja.
 
 Gak juga bos, elo bisa pake titik dua, titik, underscore (_), kutip, atau apapun itu, tapi paling enak sih misahin pake titik dua aja hehehe. Gak deng bukan masalah enak atau gak, tapi bisa dibilang yang paling *common*.
 
+## Catatan Terakhir
 
-## Catatan Terakhir, biasain set expire data
+Biasain set expire data.
 
 Kalo kalian dapet challenge kaya yang gue bahas di atas dimana data harus disimpan di lokal dan programnya jalan dengan koneksi internet yang minim di sebuah lokasi terpencil atau bahkan gak ada sama sekali, selalu consider simpen data di Redis dengan meng-set expire data tersebut, tujuannya apa? Ya jelas, biar kaga lupa.
 

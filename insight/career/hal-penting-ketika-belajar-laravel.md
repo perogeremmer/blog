@@ -1,6 +1,24 @@
 <img src="assets/hal-penting-belajar-laravel/1d7b2dc4-750e-4d48-baab-214f00b0e832.png" style="border-radius:10px;" />
 
-# Hal penting ketika belajar Laravel
+
+<br/>
+
+**Table of contents**
+
+- [Hal penting ketika belajar Laravel](#hal-penting-ketika-belajar-laravel)
+- [Gimana cara belajar Laravel?](#gimana-cara-belajar-laravel)
+- [Pelajari Konsep MVC](#pelajari-konsep-mvc)
+- [Pahami Routing](#pahami-routing)
+- [Gunakan Migration \& Seeder](#gunakan-migration--seeder)
+- [Maksimalin Penggunaan Middleware](#maksimalin-penggunaan-middleware)
+- [Selalu Gunakan Templating](#selalu-gunakan-templating)
+- [Belajar Bikin Unit Testing](#belajar-bikin-unit-testing)
+- [Belajar bikin CLI](#belajar-bikin-cli)
+- [Menikmati Model Eloquent](#menikmati-model-eloquent)
+- [Matengin Validasi](#matengin-validasi)
+- [Eksplorasi Events](#eksplorasi-events)
+
+## Hal penting ketika belajar Laravel
 
 by [@perogeremmer](https://twitter.com/perogeremmer)
 
