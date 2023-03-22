@@ -1,4 +1,4 @@
-<img src="assets/1d7b2dc4-750e-4d48-baab-214f00b0e832.png" style="border-radius:10px;" />
+<img src="assets/hal-penting-belajar-laravel/1d7b2dc4-750e-4d48-baab-214f00b0e832.png" style="border-radius:10px;" />
 
 # Hal penting ketika belajar Laravel
 
