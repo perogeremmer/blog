@@ -179,7 +179,7 @@ tabel `transactions`
 |id|order_id|user_id|
 |-|-|-|
 |1|BAH781|1|
-|1|BAH782|3|
+|2|BAH782|3|
 
 tabel `transaction_details`
 |id|order_id|product_id|count_of_products|
