@@ -1,6 +1,24 @@
 <img src="assets/baaf1ba4-9abb-4274-89ca-7713400c14af.png" style="border-radius:10px;" />
 
-# Cara survive sebagai mahasiswa IT 🤯
+<br/>
+
+by [@perogeremmer](https://twitter.com/perogeremmer)
+
+**Table of contents**
+
+- [Cara survive sebagai mahasiswa IT 🤯](#cara-survive-sebagai-mahasiswa-it-)
+- [Kenapa jurusan IT persaingannya ketat? ⁉️](#kenapa-jurusan-it-persaingannya-ketat-️)
+  - [Maksudnya nyantai gimana bang?](#maksudnya-nyantai-gimana-bang)
+- [Apa yang harus saya lakukan sebagai mahasiswa baru 🤔](#apa-yang-harus-saya-lakukan-sebagai-mahasiswa-baru-)
+  - [Perbaiki habbit 🕐](#perbaiki-habbit-)
+  - [Membiasakan membaca 📚](#membiasakan-membaca-)
+  - [Berpikir kreatif 📐](#berpikir-kreatif-)
+  - [Sayang sama diri sendiri 💓](#sayang-sama-diri-sendiri-)
+  - [Memiliki circle yang positif 💁](#memiliki-circle-yang-positif-)
+  - [Tutup kuping 🔇](#tutup-kuping-)
+- [Ada lagi lanjutannya?](#ada-lagi-lanjutannya)
+
+## Cara survive sebagai mahasiswa IT 🤯
 
 ![GIF SURVIVE](https://media.tenor.com/nE3xVXHp-yMAAAAC/im-gonna-make-it-reece-harle.gif)
 > src: [tenor.com](https://tenor.com)

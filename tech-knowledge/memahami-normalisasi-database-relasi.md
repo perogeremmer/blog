@@ -2,6 +2,8 @@
 
 <br/>
 
+by [@perogeremmer](https://twitter.com/perogeremmer)
+
 **Table of contents**
 
 - [Memahami Normalisasi Database Relasi](#memahami-normalisasi-database-relasi)

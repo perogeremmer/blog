@@ -2,6 +2,8 @@
 
 <br/>
 
+by [@perogeremmer](https://twitter.com/perogeremmer)
+
 **Table of contents**
 
 - [Tips Belajar Database Relasional](#tips-belajar-database-relasional)

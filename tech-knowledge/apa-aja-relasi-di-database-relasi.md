@@ -2,6 +2,8 @@
 
 <br/>
 
+by [@perogeremmer](https://twitter.com/perogeremmer)
+
 **Table of contents**
 
 - [Apa aja jenis relasi di database relasional?](#apa-aja-jenis-relasi-di-database-relasional)

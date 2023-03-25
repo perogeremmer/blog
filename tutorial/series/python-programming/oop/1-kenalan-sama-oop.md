@@ -1,6 +1,23 @@
 <img src="../assets/6eb0b1e6-4ebd-47ae-9a48-76dbeec9704e.png" style="border-radius:10px;" />
 
-# Kenalan sama OOP, penting gak penting sih
+<br/>
+
+by [@perogeremmer](https://twitter.com/perogeremmer)
+
+**Table of contents**
+
+- [Kenalan sama OOP, penting gak penting sih](#kenalan-sama-oop-penting-gak-penting-sih)
+- [Paradigma](#paradigma)
+  - [Seberapa penting Paradigma?](#seberapa-penting-paradigma)
+- [Class adalah Objek](#class-adalah-objek)
+- [Jenis OOP](#jenis-oop)
+- [Inheritance](#inheritance)
+- [Polymoprhism](#polymoprhism)
+- [Abstraction](#abstraction)
+- [Encapsulation](#encapsulation)
+    - [Kenapa variabelnya harus dibuat private?](#kenapa-variabelnya-harus-dibuat-private)
+
+## Kenalan sama OOP, penting gak penting sih
 
 Ketika belajar di perkuliahan, kalian pasti bakalan ketemu mata kuliah PBO (Pemrograman Beroirentasi Objek). Mata kuliah ini akan memungkinkan kamu belajar tentang bagaimana program akan memiliki sebuah orientasi berbasis objek. OOP ini masuknya ke paradigma pemrograman yang membuat kita selalu menggunakan class sebagai objek.
 

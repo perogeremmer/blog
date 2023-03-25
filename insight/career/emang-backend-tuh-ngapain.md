@@ -2,6 +2,8 @@
 
 <br/>
 
+by [@perogeremmer](https://twitter.com/perogeremmer)
+
 **Table of contents**
 
 - [Emang Backend Engineer Tuh Ngapain?](#emang-backend-engineer-tuh-ngapain)

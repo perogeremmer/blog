@@ -2,6 +2,8 @@
 
 <br/>
 
+by [@perogeremmer](https://twitter.com/perogeremmer)
+
 **Table of contents**
 
 - [Cara pake Redis (yang mungkin aja ini udah benar)](#cara-pake-redis-yang-mungkin-aja-ini-udah-benar)

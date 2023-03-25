@@ -1,6 +1,20 @@
 <img src="../assets/7b0d187c-b125-4e35-94ac-6ee81c33e1fa.png" style="border-radius:10px;" />
 
-# Latihan OOP - Tahap 1 - Membuat aplikasi pesan
+<br/>
+
+by [@perogeremmer](https://twitter.com/perogeremmer)
+
+**Table of contents**
+
+- [Latihan OOP - Tahap 2 - Membuat aplikasi pesan](#latihan-oop---tahap-2---membuat-aplikasi-pesan)
+- [Overview](#overview)
+  - [Pertama, bikin struktur folder kaya gini](#pertama-bikin-struktur-folder-kaya-gini)
+  - [Kedua, kita prepare dulu untuk perang](#kedua-kita-prepare-dulu-untuk-perang)
+  - [Eh salah, maksudnya kita bikin masing-masing file berikut](#eh-salah-maksudnya-kita-bikin-masing-masing-file-berikut)
+- [Hasil](#hasil)
+- [Bedah Kode](#bedah-kode)
+
+## Latihan OOP - Tahap 2 - Membuat aplikasi pesan
 
 Gimana ges, udah belajar dan kenalan sama OOP kan? Kalo belom dan belom paham, jangan buru-buru kesini, better kamu [kesini dulu](https://github.com/perogeremmer/blog/blob/master/tutorial/series/python-programming/oop/1.%20Kenalan%20sama%20OOP.md).
 
