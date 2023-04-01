@@ -1,4 +1,4 @@
-<img src="assets/kenalan-sama-kolom-json/73761957-91d7-45a6-a9ce-a54f5aa48ccb.png" style="border-radius:10px;" />
+<img src="assets/kenalan-sama-kolom-json/7613eca4-6263-45c6-8487-3ed8a7182e50.png" style="border-radius:10px;" />
 
 <br/>
 
@@ -51,6 +51,8 @@ JSON ini selain nyimpen objek, bisa juga nyimpen array of object, yap objek di d
 So, cara ngolahnya ya sama kaya elo yang bikin array object aja di bahasa pemrograman.
 
 ## Apa manfaat JSON di database?
+
+<img src="assets/kenalan-sama-kolom-json/73761957-91d7-45a6-a9ce-a54f5aa48ccb.png" style="border-radius:10px;" />
 
 Simplenya, mempermudah penyimpanan data tanpa bikin kolom baru. Kita sama-sama tahu kalo mau nyimpen data di database kan perlu sebuah kolom, ibarat excel kita kalo mau nyimpen informasi lainnya harus bikin kolom bererot sampai kanan dan mentok.
 
