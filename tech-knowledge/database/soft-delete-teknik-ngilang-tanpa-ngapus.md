@@ -89,6 +89,6 @@ Kurang lebih sih gitu, sebenernya data kalian disimpan rapat-rapat oleh para tec
 
 Cuma satu emoji yang bisa saya gambarin, yaitu 😆.
 
-You know what I mean. 
+You know what I mean.
 
 So, pikir-pikir lagi ya kalo mau mengirimkan sesuatu, apalagi gambar senonoh/vulgar.
