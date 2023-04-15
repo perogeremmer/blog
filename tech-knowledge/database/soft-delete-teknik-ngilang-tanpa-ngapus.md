@@ -118,7 +118,7 @@ Sederhana kan? Nyatanya ini yang sebenernya terjadi kalo di dunia backend, datan
 
 Kurang lebih sih gitu, sebenernya data kalian disimpan rapat-rapat oleh para tech company, dan ini fakta. Data kalian dipake buat bahan analytics mereka supaya mereka bisa ambil keputusan terkait produk mereka.
 
-> Bentar bang, berarti data tweets saya kalo saya hapus gimana? Data pesan yang saya kirim di Whatsapp walaupun saya hapus, gak bener-bener ilang dong di pihak whatsappnya?
+> Bentar bang, berarti data twit saya kalo saya hapus gimana? Data pesan yang saya kirim di messenger walaupun saya hapus, gak bener-bener ilang dong di pihak messengernya?
 
 Cuma satu emoji yang bisa saya gambarin, yaitu 😆.
 
