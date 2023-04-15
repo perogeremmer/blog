@@ -13,6 +13,7 @@ by [@perogeremmer](https://twitter.com/perogeremmer)
   - [Text based](#text-based)
   - [Datetime based](#datetime-based)
 - [Paling bagus pake tipe apa bang?](#paling-bagus-pake-tipe-apa-bang)
+- [Contoh Soft Delete](#contoh-soft-delete)
 - [Berarti sebenernya data kita selama ini gak ilang ya?](#berarti-sebenernya-data-kita-selama-ini-gak-ilang-ya)
 
 ## Soft Delete, Teknik Ngilang Tanpa Ngapus
@@ -80,6 +81,38 @@ Nah kalo pake kolom ini kita langsung ngisi aja tanggal dari kolom tersebut, bis
 Gak ada yang paling bagus, sesuain aja sama kebutuhannya. Kalo misalnya perlu untuk deteksi kapan dihapus secara exact tanggalnya, pake datetime based, kalo butuh multiple condition silahkan pake text based.
 
 Tapi in my honest opinion, better pake datetime, karena bisa spesifik nandain kapan action itu dilakukan. Cuma kekurangannya ya actionnya cuma satu, yaitu sesuai nama kolom. Maka makesure kalau ada multiple conditions pake text based, **tapi khusus menghapus, pake datetime based**. Itu sih saran saya aja.
+
+## Contoh Soft Delete
+
+Misalnya kita ada table barang kaya begini:
+| id | name               | category    | price | created_at          | deleted_at          |
+|----|--------------------|-------------|-------|---------------------|---------------------|
+| 1  | MacBook Air        | Electronics | 1099  | 2022-01-01 09:00:00 | NULL                |
+| 2  | Canon EOS R        | Electronics | 2199  | 2022-01-02 10:00:00 | NULL                |
+| 3  | Nike Air Max 90    | Shoes       | 129   | 2022-01-03 11:00:00 | 2022-02-01 12:00:00 |
+| 4  | Adidas Ultraboost  | Shoes       | 149   | 2022-01-04 12:00:00 | NULL                |
+| 5  | Samsung Galaxy S21 | Electronics | 899   | 2022-01-05 13:00:00 | NULL                |
+| 6  | LG 65-inch TV      | Electronics | 1799  | 2022-01-06 14:00:00 | NULL                |
+| 7  | Lenovo ThinkPad X1 | Electronics | 1799  | 2022-01-07 15:00:00 | NULL                |
+| 8  | Nike Air Force 1   | Shoes       | 99    | 2022-01-08 16:00:00 | NULL                |
+| 9  | PlayStation 5      | Electronics | 499   | 2022-01-09 17:00:00 | NULL                |
+| 10 | Amazon Echo Dot    | Electronics | 49    | 2022-01-10 18:00:00 | NULL                |
+
+Pertanyaannya, gimana cara nampilin data yang **gak kehapus**?
+
+Gampang, pake query ini:
+
+```sql
+SELECT * FROM products WHERE deleted_at IS NOT NULL
+```
+
+Kalo misalnya kita mau cari yang udah kehapus:
+
+```sql
+SELECT * FROM products WHERE deleted_at IS NULL
+```
+
+Sederhana kan? Nyatanya ini yang sebenernya terjadi kalo di dunia backend, datanya dikasih flag (tanda) supaya kehapus, bukan beneran kehapus.
 
 ## Berarti sebenernya data kita selama ini gak ilang ya?
 
