@@ -14,6 +14,7 @@ by [@perogeremmer](https://twitter.com/perogeremmer)
   - [Datetime based](#datetime-based)
 - [Paling bagus pake tipe apa bang?](#paling-bagus-pake-tipe-apa-bang)
 - [Contoh Soft Delete](#contoh-soft-delete)
+- [Gimana cara balikin data kehapus bang?](#gimana-cara-balikin-data-kehapus-bang)
 - [Berarti sebenernya data kita selama ini gak ilang ya?](#berarti-sebenernya-data-kita-selama-ini-gak-ilang-ya)
 
 ## Soft Delete, Teknik Ngilang Tanpa Ngapus
@@ -103,16 +104,34 @@ Pertanyaannya, gimana cara nampilin data yang **gak kehapus**?
 Gampang, pake query ini:
 
 ```sql
-SELECT * FROM products WHERE deleted_at IS NOT NULL
+SELECT * FROM products WHERE deleted_at IS NULL
 ```
 
 Kalo misalnya kita mau cari yang udah kehapus:
 
 ```sql
-SELECT * FROM products WHERE deleted_at IS NULL
+SELECT * FROM products WHERE deleted_at IS NOT NULL
 ```
 
 Sederhana kan? Nyatanya ini yang sebenernya terjadi kalo di dunia backend, datanya dikasih flag (tanda) supaya kehapus, bukan beneran kehapus.
+
+## Gimana cara balikin data kehapus bang?
+
+Ini konsepnya sama kaya google mail kamu, kalo kamu perhatikan, ketika salah satu email kamu hapus maka dia akan masuk ke bagian trash, yang mana kalo 30 hari gak di-restore, ya bakalan dihilangkan selamanya.
+
+Jadi kalo diibaratkan di-query ketika buka email trash tuh kaya gini:
+
+```sql
+SELECT * FROM emails WHERE deleted_at IS NOT NULL
+```
+
+Nah ketika misalnya kamu pengen restore, maka yang dilakukan sama databasenya adalah mengupdate atribut kolom `deleted_at`.
+
+```sql
+UPDATE emails SET deleted_at = NULL WHERE id = ?
+```
+
+Otomatis datanya akan balik lagi deh nongol karena kolom `deleted_at` sudah dibuat `NULL` kembali.
 
 ## Berarti sebenernya data kita selama ini gak ilang ya?
 
