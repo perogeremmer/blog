@@ -9,6 +9,7 @@ by [@perogeremmer](https://twitter.com/perogeremmer)
 - [Introduction](#introduction)
 - [Ngoding](#ngoding)
 - [Mengurutkan dari Kiri](#mengurutkan-dari-kiri)
+- [Pencarian](#pencarian)
 - [Time Complexity](#time-complexity)
 
 ## Introduction
@@ -355,6 +356,175 @@ hudya@pop-os:~/code/data-structure/binary-tree$ python3 main.py
 
 Jadi permasalahan inorder, preorder, dan postorder ini cuma peletakan posisi akarnya aja, mau di tengah? Di awal, apa di akhir? Kalian sendiri yang tentuin nilainya :)
 
+## Pencarian
+
+Gimana caranya melakukan pencarian terhadap sebuah nilai? Perhatikan kode berikut gengs:
+
+```python
+def find(self, value):
+    if value < self.root:
+        if not self.left:
+            return False
+        else:
+            return self.left.find(value)
+    elif value > self.root:
+        if not self.right:
+            return False
+        else:
+            return self.right.find(value)
+    else:
+        return True
+```
+
+Kita hanya perlu menambahkan fungsi di atas untuk mencari nilai yang kita inginkan. Coba deh kalian perhatiin, secara kode sebenernya ini tuh cukup sederhana:
+
+1. Kalo nilainya lebih kecil dari akar, cari ke kiri
+2. Kalo nilainya lebih besar dari akar, cari ke kanan
+3. Kalo nilainya sama kaya akar, ya kita asumsiin bahwa itu nilai yang dicari.
+
+Pencarian untuk akar kiri dan kanan juga terbilang sederhana, karena kita menjalankan fungsi rekursif, yang mana ia akan memanggil fungsinya sendiri.
+
+Contoh, pencarian ke kiri:
+
+1. Kalo misalnya nilai yang dicari lebih kecil dari akar, cari ke kiri
+2. Kalo misalnya nilai sebelah kiri kosong, maka kembalikan false, tapi kalo ada, kita cek lagi di bagian kiri.
+
+Masih bingung? Anggaplah kita punya graph seperti ini, kita misalnya pengen cari angka 3:
+
+```mermaid
+graph TD;
+  A((100))
+  B((10))
+  C((9))
+  F((12))
+  H((134))
+  I((3))
+  J((5))
+  A -->|insert| B;
+  B -->|insert| C;
+  B -->|insert| F;
+  A -->|insert| H;
+  C -->|insert| I;
+  C -->|insert| J;
+```
+
+Pertama, bentuk pencariannya akan menjadi seperti ini:
+
+```mermaid
+graph TD;
+  A((100))
+  B((10))
+  H((134))
+  A -->|insert| B;
+  A -->|insert| H;
+```
+
+Karena nilai yang dicari adalah 3, dan 3 lebih kecil dari akarnya yaitu 100, maka kita pindah ke akar kiri.
+
+```mermaid
+graph TD;
+  B((10))
+  C((9))
+  F((12))
+  B -->|insert| C;
+  B -->|insert| F;
+```
+
+Kemudian, karena 3 lebih kecil dari 10 maka kita lari ke kiri, yaitu yang akarnya 9.
+
+```mermaid
+graph TD;
+  C((9))
+  I((3))
+  J((5))
+  C -->|insert| I;
+  C -->|insert| J;
+```
+
+Lanjut, karena 3 masih lebih kecil dari 9 maka kita lempar ke akar kiri, yaitu yang akarnya 3.
+
+```mermaid
+graph TD;
+  I((3))
+```
+
+Di akar terakhir, 3 tidak memiliki cabang manapun, lalu bagaimana bisa dideteksi bahwa 3 merupakan nilai yang dicari? Apabila kita perhatikan algoritma di atas sebagai berikut:
+
+1. Kalo nilai lebih kecil dari 3, maka lempar ke cabang kiri
+2. Kalo nilai lebih besar dari 3, maka lempar ke cabang kanan.
+
+Inget, kuncinya ada dua, yaitu lebih kecil atau lebih besar, bukan **lebih kecil sama dengan** atau **lebih besar sama dengan**.
+
+Jelas, 3 itu tidak lebih kecil dari 3, dan 3 juga tidak lebih besar dari 3, tapi 3 itu sama dengan 3, maka masuk ke kondisi else terakhir. Sehingga dianggap true.
+
+Kalo kamu pengen liat bentuk kodenya akan menjadi seperti ini:
+
+```python
+class TreeNode:
+
+    def __init__(self, root):
+        self.left = None
+        self.right = None
+        self.root = root
+
+    def insert(self, value):
+        if value < self.root:
+            if not self.left:
+                self.left = TreeNode(root=value)
+            else:
+                self.left.insert(value)
+        else:
+            if not self.right:
+                self.right = TreeNode(root=value)
+            else:
+                self.right.insert(value)
+
+    def inorder_traversal(self):
+        if self.left:
+            self.left.inorder_traversal()
+        print(self.root)
+        if self.right:
+            self.right.inorder_traversal()
+
+    def preorder_traversal(self):
+        print(self.root)
+        if self.left:
+            self.left.preorder_traversal()
+        if self.right:
+            self.right.preorder_traversal()
+
+    def postorder_traversal(self):
+        if self.left:
+            self.left.postorder_traversal()
+        if self.right:
+            self.right.postorder_traversal()
+        print(self.root)
+        
+    def find(self, value):
+        if value < self.root:
+            if not self.left:
+                return False
+            else:
+                return self.left.find(value)
+        elif value > self.root:
+            if not self.right:
+                return False
+            else:
+                return self.right.find(value)
+        else:
+            return True
+
+
+tree = TreeNode(100)
+tree.insert(10)
+tree.insert(134)
+tree.insert(9)
+tree.insert(12)
+tree.insert(153)
+tree.insert(101)
+
+print(tree.find(9))
+```
 
 ## Time Complexity
 
@@ -369,7 +539,3 @@ Kompleksitas waktu dari BST (Binary Search Tree) ini sangat bergantung dari ting
 Kalo misalnya akarnya gak balance antara kanan dan kiri jadinya kompleksitas waktu terburuknya malah bisa jadi `O(n)` guys.
 
 Gimana biar tetep seimbang? Ya ada teknik lebih advancenya sih untuk merotasi nilai atau nge-restruktur akarnya supaya balance. Well, kita akan bahas nanti ya~
-
-** Note:
-
-Akan diupdate untuk algoritma searchnya hehehe 😆
