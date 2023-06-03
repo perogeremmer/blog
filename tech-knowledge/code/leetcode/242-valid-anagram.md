@@ -115,57 +115,77 @@ class Solution(object):
 
 Bingung ya? hahaha, bentar saya jabarin ya.
 
+```
 teks 1: raga
 teks 2: agar
+```
 
 Kita looping teks pertama dan simpan pada objek teks pertama dengan hasil berikut:
+```
 r = 1
 a = 2
 g = 1
+```
 
 Kita looping teks kedua dan simpan pada objek teks kedua dengan hasil berikut:
+```
 a = 2
 g = 1
 r = 1
+```
 
 Ini saya nulisnya gak ngasal, soalnya kan kita looping, jadi urutannya pasti begini.
 
 Nah kalau kita looping objek teks kedua gimana hasilnya?
+
 a = 2
 
 a ini ada di objek teks pertama, jumlahnya pun dua.
 
 g = 1
+
 g ini ada di objek teks pertama, jumlahnya pun satu.
 
 r = 1
+
 r ini ada di objek teks pertama, jumlahnya pun satu.
 
 Sehingga `agar` ini adalah anagram dari `raga`.
 
+-- 
+
 Contoh kedua:
 
+```
 teks 1: naga
 teks 2: nata
+```
 
 Kita looping teks pertama dan simpan pada objek teks pertama dengan hasil berikut:
+```
 n = 1
 a = 2
 g = 1
+```
 
 Kita looping teks kedua dan simpan pada objek teks kedua dengan hasil berikut:
+```
 n = 1
 a = 2
 t = 1
+```
 
 Nah kalau kita looping objek teks kedua gimana hasilnya?
 
 n = 1
+
 n ini gak ada di objek teks pertama.
 
 Meskipun a ada di objek teks pertama, tapi karena n udah gak ada, maka kita bisa hentikan loopingnya dan langsung kembalikan false, karena udah pasti gak teks kedua bukan anagram dari teks pertama.
 
 Sehingga `naga` ini bukan anagram dari `nata`.
+
+-- 
 
 Tambahan
 
