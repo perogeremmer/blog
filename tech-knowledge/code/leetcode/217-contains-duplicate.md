@@ -18,6 +18,8 @@ by [@perogeremmer](https://twitter.com/perogeremmer)
 
 Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
+--
+
 Jadi ada kasus dimana kita harus mengembalikan true kalau ada elemen yang sama.
 
 Soal LeetCode [disini](https://leetcode.com/problems/contains-duplicate/).
