@@ -155,7 +155,7 @@ Jadi berapa nilai `max_profit`-nya? Yes, 4.
 ## Result
 
 Hasilnya adalah sebagai berikut:
-![Hasilnya](./assets/20-valid-parantheses/result.png)
+![Hasilnya](./assets/121-best-time-to-buy-and-sell-stock/result.png)
 
 Yap, dengan memory yang kecil karena memang kasusnya sederhana, kita bisa mendapatkan hasil yang cukup memuaskan.
 
