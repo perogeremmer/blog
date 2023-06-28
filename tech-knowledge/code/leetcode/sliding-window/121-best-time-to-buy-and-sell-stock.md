@@ -98,7 +98,7 @@ Jawabannya, karena l itu bernilai 0, sedangkan kita mau bandingin dua data, anta
 
 Keempat, kita periksa kondisi, kalau nilai index `l` lebih kecil dari nilai index `r`, maka kita hitung profitnya. Kalau profitnya >= dari max profit, maka tiban nilai `max_profit`.
 
-<!-- Kelima, kalau kondisi pertama tidak terpenuhi dimana nilai `prices[l]` tidak lebih kecil dari `prices[r]`, maka kita tiban nilai l dengan nilai r. Tujuannya adalah supaya memisahkan kursor atau pointer dimana nilai tersebut pasti -->
+Kelima, kalau kondisi pertama tidak terpenuhi dimana nilai `prices[l]` tidak lebih kecil dari `prices[r]`, maka kita tiban nilai l dengan nilai r. Tujuannya adalah kalau misalnya nilainya tiba-tiba lebih kecil, misal nilai pertama adalah 10 dan nilai kedua adalah 5, maka jelas kita gak akan pernah dapet profit kalo index l-nya tidak digeser ke nilai kedua.
 
 Keenam, kita naikkan nilai r dengan increment dengan nilai 1.
 
@@ -123,6 +123,34 @@ Pada iterasi kedua kita cek nilai `prices[l]` adalah 1 dan `prices[r]` adalah 10
 Sekarang nilai `l = 0`, dan nilai `r = 3`.
 
 Pada iterasi ketiga kita cek nilai `prices[l]` adalah 1 dan `prices[r]` adalah 3, maka jelas `prices[l] < prices[r]`. Nilai `max_profit` tidak berubah, karena 3-1 = 2 sedangkan nilai `max_profit` sekarang adalah 9.
+
+Jadi berapa nilai `max_profit`-nya? Yes, 9.
+
+> Bang jelasin dong pas bagian yang kelima lo tulis, dimana kondisinya masuk ke else
+
+Boleeeeeeh.
+
+```bash
+prices = [10, 1, 5, 2]
+```
+
+Kalau kita baca dari nilai prices di atas, berapa profit maksimumnya? Yap, 4. Dengan membeli saham di hari kedua (nilai = 2) dan menjualnya pada hari ketiga (nilai = 5).
+
+Pertama kita set `l, r = 0, 1` dan selanjutnya kita looping.
+
+Pada iterasi pertama kita cek nilai `prices[l]` adalah 10 dan `prices[r]` adalah 1, maka jelas `prices[l] > prices[r]`. Kondisi pertama yang kita tulis tidak terpenuhi, maka dari itu kita geser index l-nya menjadi nilai r, yaitu adalah 1.
+
+Sekarang nilai `l = 1`, dan nilai `r = 2`.
+
+Pada iterasi kedua kita cek nilai `prices[l]` adalah 1 dan `prices[r]` adalah 5, maka jelas `prices[l] < prices[r]`. Nilai `max_profit` juga berubah, dari 0 menjadi 4, karena 5-1 = 4.
+
+Sekarang nilai `l = 1`, dan nilai `r = 3`.
+
+Pada iterasi ketiga kita cek nilai `prices[l]` adalah 1 dan `prices[r]` adalah 2, maka jelas `prices[l] < prices[r]`. Nilai `max_profit` tidak berubah, karena 2 - 1 = 1, sedangkan nilai `max_profit` saat ini adalah 4.
+
+Looping udah abis.
+
+Jadi berapa nilai `max_profit`-nya? Yes, 4.
 
 ## Result
 
