@@ -25,7 +25,7 @@ Every close bracket has a corresponding open bracket of the same type.
 
 --
 
-Pada kasus ini, kita ditantang untuk untuk memeriksa apakah karakter string yang di-input memiliki karakter '(', ')', '{', '}', '[' dan ']', nah kita harus memastikan apakah karakter yang di-input itu valid atau tidak.
+Pada kasus ini, kita ditantang untuk memeriksa apakah karakter string yang di-input memiliki karakter '(', ')', '{', '}', '[' dan ']', nah kita harus memastikan apakah karakter yang di-input itu valid atau tidak.
 
 Syarat karakternya valid adalah:
 
@@ -33,8 +33,7 @@ Syarat karakternya valid adalah:
 2. Setiap simbol yang dibuka harus ditutup dengan urutan yang benar, jadi yang benar begini `(){}` bukan begini `(}{)` atau yang benar tuh begini `({})`. Intinya penutupan simbol harus tepat.
 3. Setiap simbol yang ditutup harus sama tipenya kaya simbol yang dibuka, intinya sama aja sih kaya nomor satu.
 
-
-Disini kita akan menggunakan konsep stack, stack itu adalah konsep dimana kita nyimpen nilai bertumpuk, kaya cucian piring. 
+Disini kita akan menggunakan konsep stack, stack itu adalah konsep dimana kita nyimpen nilai bertumpuk, kaya cucian piring.
 
 Soal LeetCode [disini](https://leetcode.com/problems/valid-parentheses/description/).
 
@@ -72,7 +71,7 @@ Artinya panjang karakter berkisar 1 sampai 104 dan karakter yang dikirim sbg nil
 
 Oke karena ini Stack, tentu aja kita bisa menggunakan salah satu tipe data, yaitu `array`.
 
-Solusinya akan jadi seperti in
+Solusinya akan jadi seperti ini guys:
 
 ```python
 class Solution:
@@ -116,7 +115,7 @@ stack = ["{"]
 
 Keempat, apabila stack tidak kosong dan karakter terakhir pada stack sama dengan nilai data, maka isi stack kita pop (cabut).
 
-Masih pada contoh ketiga, kalau misalnya perulangan kedua, maka karakter yang kita dapatkan adalah `}`. 
+Masih pada contoh ketiga, kalau misalnya perulangan kedua, maka karakter yang kita dapatkan adalah `}`.
 
 Karena stack sudah terisi karakter `{` dan `stack[-1]` yang artinya nilai dari index terakhir pada stack sesuai dengan ada yang di data, maka kita bisa pop (cabut) nilainya.
 
@@ -135,6 +134,7 @@ Gambaran yang terjadi di algoritma ketika dijalankan:
 `input = "({})"`
 
 iterasi pertama  - `(`
+
 ```python
 stack = []
 # karena ( tidak ada di data, maka kita input
@@ -142,6 +142,7 @@ stack = ["("]
 ```
 
 iterasi kedua - `{`
+
 ```python
 stack = ["("]
 # karena ( tidak ada di data, maka kita input lagi
@@ -149,6 +150,7 @@ stack = ["(", "{"]
 ```
 
 iterasi ketiga - `}`
+
 ```python
 stack = ["(", "{"]
 # karena ada nilai } di data, dan index terakhir pada stack adalah { yang mana sesuai pada nilai data, maka dianggap valid dan nilai terakhir diangkat (dicabut).
@@ -156,6 +158,7 @@ stack = ["("]
 ```
 
 iterasi ketiga - `)`
+
 ```python
 stack = ["("]
 # karena ada nilai ) di data, dan index terakhir pada stack adalah () yang mana sesuai pada nilai data, maka dianggap valid dan nilai terakhir diangkat (dicabut).
@@ -164,9 +167,8 @@ stack = []
 
 Karena stack kosong, maka nilai mengambalikan `true`.
 
-
 ## Result
-![](2023-06-28-15-19-09.png)
+
 Hasilnya adalah sebagai berikut:
 ![Hasilnya](./assets/20-valid-parantheses/result.png)
 
