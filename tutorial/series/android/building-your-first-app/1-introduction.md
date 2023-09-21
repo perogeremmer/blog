@@ -18,7 +18,7 @@ Untuk aplikasi android nantinya akan kita bangun menggunakan Native Android dan 
 
 Pertama, bikin dulu project androidnya dan pilih yang empty activity.
 
-> ![NOTE]
+> [!IMPORTANT]
 > Untuk Android Studio versi baru, apabila kamu melihat Empty View Activity, pilih Empty View Activity
 
 ![Alt text](assets/1.png)
@@ -144,7 +144,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-> ![NOTE]
+> [!NOTE]
 > 💡 Copy-nya hati-hati ya! Baca dulu jangan asal copas! SESUAIKAN SAMA CODE KALIAN!
 
 Sekarang pada class MainActivity kita melihat terdapat fungsi onCreate, fungsi ini adalah fungsi yang dijalankan ketika screen tersebut atau class tersebut dijalankan. Ibarat method constructor atau bahkan lifecycle yang bisa kita temui pada framework web seperti React atau Vue yang memiliki method sejenis yaitu mounted atau created.
@@ -218,7 +218,7 @@ Gimana? Mudah kan untuk introduction ke Android, semoga kamu makin semangat bela
 
 ## Challenge
 
-> ![NOTE]
+> [!NOTE]
 > 💡 Bagaimana cara membuat edit text menjadi kosong sesaat setelah kita merubah text view dengan id txt_name?
 
 - Jawaban
