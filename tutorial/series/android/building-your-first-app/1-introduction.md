@@ -18,6 +18,9 @@ Untuk aplikasi android nantinya akan kita bangun menggunakan Native Android dan 
 
 Pertama, bikin dulu project androidnya dan pilih yang empty activity.
 
+> ![NOTE]
+> Untuk Android Studio versi baru, apabila kamu melihat Empty View Activity, pilih Empty View Activity
+
 ![Alt text](assets/1.png)
 
 Kedua, tulis nama projectnya “Belajar Todo List”
