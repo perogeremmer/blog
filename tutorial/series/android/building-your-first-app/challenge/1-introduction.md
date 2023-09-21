@@ -45,4 +45,4 @@ class MainActivity : AppCompatActivity() {
 
 Hasilnya menjadi seperti ini
 
-![Alt text](../assets/challenge-1.png)
+![Alt text](../assets/1-introduction/challenge-1.png)

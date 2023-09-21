@@ -21,23 +21,23 @@ Pertama, bikin dulu project androidnya dan pilih yang empty activity.
 > [!IMPORTANT]
 > Untuk Android Studio versi baru, apabila kamu melihat Empty View Activity, pilih Empty View Activity
 
-![Alt text](assets/1.png)
+![Alt text](assets/1-introduction//1.png)
 
 Kedua, tulis nama projectnya “Belajar Todo List”
 
-![Alt text](assets/2.png)
+![Alt text](assets/1-introduction//2.png)
 
 Untuk SDK bebas sih kalian bisa pilih apa aja, tapi saran saya yang rendah aja misalnya lollipop, setelahnya klik finish.
 
 Berikut adalah tampilan awal aplikasi native android yang akan kita bangun.
 
-![Alt text](assets/3.png)
+![Alt text](assets/1-introduction//3.png)
 
 File `MainActivity.kt` adalah file utama atau bisa kita sebut MainClass kalau di java.
 
 Sekarang kita bedah dulu ges isi struktur foldernya:
 
-![Alt text](assets/4.png)
+![Alt text](assets/1-introduction//4.png)
 
 - manifests: Informasi seputar aplikasi android kamu.
 - Java Package Nama File: Main Activity adalah file utama dari projek kalian.
@@ -45,7 +45,7 @@ Sekarang kita bedah dulu ges isi struktur foldernya:
 
 Sekarang buat tampilan agar menjadi seperti ini:
 
-![Alt text](assets/5.png)
+![Alt text](assets/1-introduction//5.png)
 
 Bagaimana caranya? Cukup drag and drop saja, tapi kita perlu rapihkan kodenya agar kita dapat membuat komponen menyesuaikan letak posisinya, pastikan hasil akhirnya seperti kode dibawah ini:
 
@@ -153,7 +153,7 @@ Pada class ini juga kita membuat tiga variabel awal untuk button, edit text, dan
 
 Hasil akhir apabila dijalankan sebelum dan sesudah namanya di-input:
 
-![Alt text](assets/6.png)
+![Alt text](assets/1-introduction//6.png)
 
 Sekarang kita akan menambahkan validasi, yaitu berupa pesan toast yang muncul apabila kita tidak mengisi data nama pada edit text.
 
@@ -204,15 +204,15 @@ Menggunakan toast, kita akan membuat semacam pesan yang muncul pada bagian bawah
 
 Kita dapat mengganti `Toast.LENGTH_SHORT` dengan `Toast.LENGTH_LONG`, caranya bagaimana? Cukup tekan CTRL + SPACE ketika menulis `Toast.LEN`. CTRL + SPACE adalah shortcut dari IDE Android Studio untuk membantu kamu menemukan fungsi atau variabel yang ada pada library atau projek kamu, alias mempercepat pekerjaanmu.
 
-![Alt text](assets/7.png)
+![Alt text](assets/1-introduction//7.png)
 
 Menggunakan validasi, kita menambahkan baris return, mengapa harus di-return? Supaya baris kodenya tidak lanjut ke bagian bawah dan langsung dikembalikan isi dari fungsi tersebut, kalau tidak percaya coba saja komen pada bagian `return@setOnClickListener` lalu jalankan kembali projek kalian menggunakan tombol berikut.
 
-![Alt text](assets/8.png)
+![Alt text](assets/1-introduction//8.png)
 
 Sekarang coba saja tekan tombol tanpa mengisi apapun, hasilnya akan keluar seperti ini:
 
-![Alt text](assets/9.png)
+![Alt text](assets/1-introduction//9.png)
 
 Gimana? Mudah kan untuk introduction ke Android, semoga kamu makin semangat belajar ya! 🙂
 
