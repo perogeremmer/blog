@@ -218,7 +218,6 @@ Gimana? Mudah kan untuk introduction ke Android, semoga kamu makin semangat bela
 
 ## Challenge
 
-> [!NOTE]
-> 💡 Bagaimana cara membuat edit text menjadi kosong sesaat setelah kita merubah text view dengan id txt_name?
+Bagaimana cara membuat teks pada edit text menjadi kosong sesaat setelah kita merubah text view dengan id txt_name? 
 
-- Jawaban
+Jawaban ada [disini](./challenge/1-introduction.md).
