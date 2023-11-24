@@ -2,7 +2,19 @@
 
 Sekarang saatnya membuat autentikasi, pada kali ini, autentikasi yang akan dibuat tidak akan menggunakan fitur autentikasi dari firebase, melainkan masih menggunakan firestore. Hal ini bertujuan untuk membuat sederhana proses autentikasi tanpa bertele-tele meminta permission ke firebase.
 
-Pertama, buatlah activity baru (pilih empty views activity atau empty activity untuk android studio versi lama) lalu buatlah actvitiy baru bernama RegisterActivity.
+Pertama, buatlah user Kotlin class baru bernama UserModel lalu masukkan kode berikut:
+
+```kotlin
+data class UserModel(
+    val Id: String? = null,
+    val Email: String? = null,
+    val Name: String? = null,
+    val Password: String? = null,
+)
+```
+
+
+Kedua, buatlah activity baru (pilih empty views activity atau empty activity untuk android studio versi lama) lalu buatlah actvitiy baru bernama RegisterActivity.
 
 Sekarang ubah code layout dari `activity_register.xml` menjadi seperti berikut:
 
