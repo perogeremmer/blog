@@ -13,8 +13,22 @@ data class UserModel(
 )
 ```
 
+Kedua, buat Kotlin class baru bernama PasswordHelper lalu masukkan kode berikut:
 
-Kedua, buatlah activity baru (pilih empty views activity atau empty activity untuk android studio versi lama) lalu buatlah actvitiy baru bernama RegisterActivity.
+```kotlin
+import java.math.BigInteger
+import java.security.MessageDigest
+
+object PasswordHelper {
+     fun md5(input: String): String {
+        val md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
+    }
+}
+```
+
+
+Ketiga, buatlah activity baru (pilih empty views activity atau empty activity untuk android studio versi lama) lalu buatlah actvitiy baru bernama RegisterActivity.
 
 Sekarang ubah code layout dari `activity_register.xml` menjadi seperti berikut:
 
