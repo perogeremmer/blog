@@ -462,3 +462,49 @@ class LoginActivity : AppCompatActivity() {
 ```
 
 Sekarang ini yang akan terjadi apabila kodemu dijalankan:![Alt text](<./assets/9-membuat-autentikasi/1.gif>)
+
+Sekarang pergi ke `AndroidManifest.xml`, dan ganti pada bagian Activity pada bagian Login agar menjadi activity utama, perhatikan kode berikut dan komparasi dengan punyamu:
+
+> [!NOTE]
+> Jangan langsung di copy paste, perhatikan!
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TodoFirebase"
+        tools:targetApi="31">
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateTodoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false">
+        </activity>
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+</manifest>
+```
