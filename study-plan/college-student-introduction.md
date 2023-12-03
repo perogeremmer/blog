@@ -58,6 +58,8 @@ Saran bahasa pembelajaran:
 
 Semiblan tahap di atas dapat dilakukan cepat, lambat, santai, ataupun kesulitan, semuanya tergantung diri kalian sendiri.
 
+<br />
+
 ## F.A.Q
 
 > Apakah saya bisa belajar secara otodidak?
@@ -75,3 +77,7 @@ Tentu, bootcamp coding memiliki yang terstruktur ditambah dengan instruktur yang
 > Apakah worth untuk membeli kelas online seperti video?
 
 Tentu saja, apabila itu dapat membantumu dibandingkan otodidak. Gunakan kelas online seperti udemy, coursera, atau e-learning (Dicoding - Indoensia) lainnya yang menyediakan tutorial dalam bentuk video. (Ini tidak ada endorse, hanya memberikan contoh).
+
+> Apakah saya berguru dengan bang Hudya?
+
+Well, sure, saya tidak selalu membuka kuota privat setiap bulannya, but you come to knock to get more details.
