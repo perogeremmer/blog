@@ -58,7 +58,7 @@ Saran bahasa pembelajaran:
 
 Semiblan tahap di atas dapat dilakukan cepat, lambat, santai, ataupun kesulitan, semuanya tergantung diri kalian sendiri.
 
-## Q & A
+## F.A.Q
 
 > Apakah saya bisa belajar secara otodidak?
 
