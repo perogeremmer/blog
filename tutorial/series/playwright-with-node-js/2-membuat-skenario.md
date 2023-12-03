@@ -136,7 +136,7 @@ await expect(page.getByText("Products")).toBeVisible()
 
 <br />
 
-> ![NOTE]
+> [!NOTE]
 > await selalu ada karena kita menggunakan playwright yang bersifat asynchronous, untuk membuatnya synchronous atau menunggu baris saat ini sebelum melakukan eksekusi terhadap baris selanjutnya, maka digunakanlah `await`.
 
 
@@ -150,7 +150,10 @@ Berikut beberapa bagian yang telah saya gunakan:
 
 Semoga membantu dan tetap semangat belajar ya! 😄
 
-Hasil akhir `login.spec.ts`:
+
+## Hasil Akhir 
+
+Hasil akhir dari `login.spec.ts` setelah semua test case dikerjakan adalah sebagai berikut:
 
 ```ts
 import { test, expect } from '@playwright/test';
