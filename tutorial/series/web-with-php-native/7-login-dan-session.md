@@ -246,10 +246,13 @@ unset($_SESSION['loggedIn']);
 unset($_SESSION['id']);
 unset($_SESSION['name']);
     
-return header("location:/inventory/login.php");
+return header("location:../inventory/login.php");
 
 ?>
 ```
+
+> [!NOTE]
+> Catatan, jangan lupa ganti `location:../inventory/login.php` dengan location:../<nama folder kamu>/login.php
 
 # Buat Middleware
 
@@ -265,6 +268,9 @@ if(!isset($_SESSION['loggedIn'])) {
 
 ?>
 ```
+
+> [!NOTE]
+> Catatan, jangan lupa ganti `location:../inventory/login.php` dengan location:../<nama folder kamu>/login.php
 
 # Ubah Index
 
@@ -359,6 +365,10 @@ Pergilah ke [localhost/inventory/register.php](http://localhost/inventory/regist
 Sekarang pergilah ke [localhost/inventory/logout.php](http://localhost/inventory/logout.php) lalu cobalah untuk akses kembali ke localhost/inventory. Apabila kamu mengikuti materi ini dengan benar kamu akan diarahkan kembali ke halaman login.
 
 Voila, kita sudah berhasil menerapkan login & session sederhana pada PHP Native.
+
+
+> [!NOTE]
+> Catatan, jangan lupa ganti `localhost/inventory/login.php` dengan `localhost/<nama folder kamu>/login.php`
 
 # Tugas Latihan
 
