@@ -1,4 +1,4 @@
-# 9. Membuat Autentikasi
+# 10. Belajar Recycler View
 
 Sebelumnya pada materi [list view](./5-belajar-list-view.md), kamu sudah belajar tentang menampilkan data secara list view. 
 
