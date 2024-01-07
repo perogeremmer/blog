@@ -46,6 +46,18 @@ function process_upload($image) {
 }
 ```
 
+Kita bedah kodenya:
+
+- `$target_dir = dirname(getcwd()) . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;`: Artinya kita mau dapetin directory supaya jadinya kaya gini contohnya: C:\xampp\htdocs\inventory\uploads
+- `mkdir($target_dir, 0777, true);`: Kalo misalnya directorynya gak ada atau foldernya belum kebuat, kita buatin foldernya dengan permission 0777 artinya semua user yang berjalan pada komputer kita boleh mengakses, membaca, membuka, dan mengeksekusi file apapunya ada di folder itu.
+- `$imageFileType = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));`: Artinya kita kecilin huruf dari nama file yang kita upload, tapi kita ambil extensionnya aja, misalnya .png, atau .jpg
+- `$fileNameWithFolder = DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $uniqueId . '.' . $imageFileType;`: Artinya kita bikin string baru yang hasilnya mirip-mirip gini `\uploads\unique-id.extension`. Tujuannya karena kita mau nyimpen nilai ini di database.
+- `$image["size"] > 500000`: Kita cek apakah ukuran file yang kita upload lebih besar dari 5 megabytes. Ohiya, kenapa ukurannya yang diperiksa adalah 500000 karena ukuran aslinya adalah `bytes`.
+- `!in_array($imageFileType, $allowedTypes)`: Kita meriksa, ada gak sih extension yang kita upload ini masuk ke tipe extension yang diizinkan gak.
+- `move_uploaded_file($image["tmp_name"], $target_file)`: Kita pindahin file yang mau diupload, dengan nama temporary tadi, ke tempat yang kita inginkan, misal nama file awalnya adalah foto.jpg, nah foto.jpg ini akan pindah ke directory uploads dengan nama baru, misalnya ua2841.jpg. Tujuannya supaya nama filenya unique dan gak niban file satu sama lain.
+
+
+
 Sekarang kita juga perbaiki method `store` dan `update`:
 
 ```php
@@ -158,6 +170,9 @@ else if ($action == "delete") {
 
 ?>
 ```
+
+Kalau diperhatikan, biasanya kita pake `$_POST`, tapi untuk file sendiri beda, kita pakenya `$_FILES` karena format file ini biasanya diambil dari binary.
+
 
 Sekarang kita ubah create.php, agar bisa melakukan upload file:
 

@@ -165,6 +165,39 @@ Masih di folder yang sama, kita buat file bernama `inventory.php` sebagai jembat
 ?>
 ```
 
+Tau gak kenapa kita harus pake `?` dan pake fungsi `bind_param`? Jawabannya sederhana, kita mencegah SQL Injection.
+
+```php
+$sql = $db->prepare("SELECT * FROM employees WHERE name ='" . $name . "';");
+$sql->execute();
+$rows = $sql->fetchAll();
+```
+
+Ini rawan banget SQL Injection. Bayangin Kalau variabel `$name` diisi nilai ini:
+
+`'; DROP TABLE employees; --`
+
+Artinya query kalian jadi begini:
+
+```sql
+SELECT * FROM employees WHERE name =''; DROP TABLE employees; --'
+```
+
+Jadi ketika kita eksekusi dimana employees yang namanya kutip-kutip alias gak ada, perintah keduanya dia malah ngedrop table employees. Artinya apa? Gak aman query begitu, dan itu sering banget di internet berkeliaran.
+
+Makanya kita perlu pake prepared statements, supaya mencegah hal itu terjadi, dan yang kita lakukan ya udah tepat, dengan `bind_param`!
+
+Ohiya, kalo ada yang berpikir kenapa sih `bind_param` ini dalamnya `sss`, artinya karena s itu stands for `String`. Berikut parameter yang bisa diganti:
+
+- i - integer
+- d - double
+- s - string
+- b - BLOB
+
+---
+
+<br />
+
 # Ubah index.php
 
 Ubah file index.php agar menjadi sebagai berikut:

@@ -266,6 +266,16 @@ if(!isset($_SESSION['loggedIn'])) {
 ?>
 ```
 
+Ohiya, isset itu artinya memeriksa apakah nilai tersebut kosong, misalnya:
+
+```php
+$y = null;
+$x = isset($y);
+```
+
+Artinya kita periksa nilai `$y` ini ada isinya atau nggak, kalau nggak ada isinya pasti null.
+
+
 # Ubah Index
 
 Sekarang lakukan sedikit perubahan pada file `index.php` milikmu menjadi seperti berikut:
