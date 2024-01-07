@@ -365,6 +365,9 @@ listTodo.setOnItemClickListener { adapterView, view, position, id ->
 }
 ```
 
+> [!NOTE]
+> Btw kita pake shared preference ini karena data base64 terlalu besar untuk dibawakan melalui Intent.
+
 Sekarang kembali ke CreateTodoActivity.kt agar pada saat melakukan edit, bisa menampilkan gambar:
 
 ```kotlin
@@ -395,6 +398,8 @@ fun convertToBitmap(base64String: String): Bitmap {
     return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
 }
 ```
+
+Agar hasilnya lebih smooth kita bisa memberikan jeda seolah-olah aplikasinya sedang bekerja dengan class `Timer`.
 
 Hasilnya adalah sebagai berikut:
 

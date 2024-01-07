@@ -269,6 +269,8 @@ override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     }
 ```
 
+Position ini juga merupakan index position, artinya dimulai dari angka 0.
+
 Ketika seluruh tampilannya sudah muncul, barulah fungsi ini berjalan, `onBindViewHolder` akan menjalankan perintah dari fungsi `setupView` dengan mengisi 3 parameter yang dibutuhkan yaitu title, description, dan image.
 
 ```kotlin
@@ -343,3 +345,21 @@ Untuk kode MainActivity, kita hanya memanggil recyclerview saja dan kita set lay
 Sekarang jalankan dan lihat hasil akhirnya:
 
 ![Alt text](./assets/10-belajar-recycler-view/1.gif)
+
+Beberapa hal yang perlu kalian tahu lagi soal RecyclerView:
+
+Pertama, kita bisa buat isi dari list view agar kebalik dengan kode: 
+```kotlin
+recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+```
+
+Parameter ketiga ini adalah parameter yang menunjukkan bahwa kita harus balik dari ascending menjadi descending. Karena `false` ya berarti ini ascending, kalau `true` jadi descending
+
+Kedua, stack pada recycler view ini tidak terbatas, tapi semakin banyak berarti mempengaruhi performa aplikasi yang diinstall.
+
+Ketiga, recycler view ini memiliki tiga jenis layout:
+
+- Constraint Layout
+- Linear Layout
+- Relative Layout
+
