@@ -134,6 +134,8 @@ Ok to proceed? (y) y
 ╰──────────────────────────────────────────────────────────────────╯
 ```
 
+## Menjalankan proyek
+
 Sebelum menjalankan proyeknya, silahkan buka melalui Visual Studio Code atau editor lainnya yang kalian suka.
 
 Buka file bagian .env dan lihat bagian ini:
@@ -221,9 +223,78 @@ Apabila berhasil maka akan muncul teks sebagai berikut:
 [15:15:04.017] INFO (282496): started HTTP server on localhost:3333
 ```
 
-Silahkan akses ke http://127.0.0.1:3333 dan kamu akan menemukan gambar di bawah ini:
-
+Silahkan akses ke <http://127.0.0.1:3333> dan kamu akan menemukan gambar di bawah ini:
 
 ![alt text](./assets/2.png)
+
+## Struktur
+
+Sekarang kita lihat struktur folder kita sebagai berikut
+
+```plain
+hello-world/
+├── app/
+├── bin/
+│ ├── console.ts
+│ ├── server.ts
+│ └── test.ts
+├── config/
+├── database/
+│ └── migrations/
+│ └── 1723215580268_create_users_table.ts
+├── node_modules/
+├── resources/
+│ ├── css/
+│ ├── js/
+│ └── views/
+├── start/
+│ ├── env.ts
+│ ├── kernel.ts
+│ └── routes.ts
+├── tests/
+│ └── bootstrap.ts
+├── .editorconfig
+├── .env
+├── .env.example
+├── .gitignore
+├── ace.js
+├── adonisrc.ts
+├── docker-compose.yml
+├── package-lock.json
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+Berikut penjelasannya dari bagian yang perlu dijelaskan.
+
+Karena adonis menggunakan pattern MVC (Model View Controller), otomatis kalian hanya perlu berfokus kepada folder `app` saja karena semua logika kode akan ditempatkan pada folder tersebut.
+
+
+- `app/` : Folder ini berisi file-file aplikasi utama, seperti controller, model, dan middleware.
+- `bin/`
+  - `console.ts`: File ini digunakan untuk mendefinisikan perintah-perintah konsol yang dapat dijalankan.
+  - `server.ts`: File ini digunakan untuk menjalankan server.
+  - `test.ts`: File ini konfigurasi terkait pengujian otomatis.
+- `config/`: Folder ini berisi file konfigurasi untuk aplikasi AdonisJS.
+- `database/`
+  - `migrations/`: Folder ini berisi file migrasi database.
+    - `1723215580268_create_users_table.ts`: Contoh file migrasi untuk membuat tabel pengguna.
+- `resources/`
+  - `css/`: Folder untuk menyimpan file CSS.
+  - `js/`: Folder untuk menyimpan file JavaScript.
+  - `views/`: Folder untuk menyimpan file template atau view.
+- `start/`
+  - `env.ts`: File ini berisi konfigurasi env.
+  - `kernel.ts`: File ini berisi konfigurasi kernel proyek, seperti middleware global.
+  - `routes.ts`: File ini berisi definisi rute untuk aplikasi.
+- `tests/`
+  - `bootstrap.ts`: File ini digunakan untuk mengkonfigurasi pengujian yang akan dijalankan.
+- `.editorconfig`: File ini berisi konfigurasi editor untuk menjaga konsistensi gaya kode.
+- `.env`: File ini berisi variabel lingkungan untuk konfigurasi aplikasi.
+- `.env.example`: Contoh file .env untuk referensi.
+- `ace.js`: File ini digunakan untuk mengkonfigurasi perintah Ace dari Adonis.
+- `adonisrc.ts`: File konfigurasi utama untuk AdonisJS.
+- `vite.config.ts`: File ini berisi konfigurasi untuk Vite, alat pembangun frontend.
 
 Demikian tutorial AdonisJS bagian pertama :)
