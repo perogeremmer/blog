@@ -236,7 +236,7 @@ Terakhir, buat file `base.edge` di dalam folder `components` lalu masukkan kode 
 
 Jadi setelah kita membuat masing-masing setiap bagian yang dapat digunakan kembali (reusable), kita satukan semuanya di dalam sebuah file base.
 
-Kita membuatnya di dalam folder `components` karena memang aturan dari engine `edge` dari Adonis seperti itu, jadi kita hanya perlu mengikutinya.
+Kita membuat file `base.edge` ini berada di dalam folder `components` karena memang aturan dari engine `edge` dari Adonis seperti itu, jadi kita hanya perlu mengikutinya.
 
 Dapat dilihat dari kode di atas bahwa bagian `include` artinya kita sisipkan seluruh kode di file `layouts/head.edge` ke dalam tag `head`.
 
@@ -289,8 +289,98 @@ Terakhir, ubah file `resources/views/pages/home.edge` dengan kode berikut:
   </div>
 </div>
 @end
+@end
 ```
 
-Sekarang jalankan kembali `npm run dev` dan akses url `localhost:3333/`, maka akan muncul tampilannya:
+Pada kode di atas kita mengimplementasikan template base dengan mengaktifkan `@base()`, hal ini juga dikarenakan base.edge berada pada folder `resources/views/components`, sehingga apabila kita membuat file lain misalnya `base_template.edge` kita bisa mengaktifkannya secara otomatis dengan cara memanggil `@base_template()`.
+
+Kemudian pada file `base.edge` kalian melihat baris `{{{ await $slots.content() }}}`, baris ini akan diisi dengan kode di dalam tag `@slot("content")` dan nama `'content'` ini tidak selalu harus `'content'`, bisa saja diisi nama lain dengan catatan pada base template juga mengaktifkan fungsi tersebut.
+
+Misalnya kita ingin membuat slot baru bernama `bagian_bawah`, maka kita bisa membuatnya dengan `{{{ await $slots.bagian_bawah() }}}` nantinya pada template yang ingin menggunakan base tersebut bisa memanggil `@slot("bagian_bawah")` untuk mengisi tag di dalamnya.
+
+Sekarang jalankan kembali `npm run dev` dan akses url `localhost:3333/todo`, maka akan muncul tampilannya:
 
 ![alt text](./assets/5.png)
+
+Setelah dijalankan maka begini hasilnya, dimana kita bisa melihat tampilan sederhana dari template Bootstrap yang mengimplementasikan tampilan base.
+
+## Routing dengan Konten Berbeda
+
+Sekarang kita ingin coba untuk membuat routing lain dengan konten yang berbeda. Pergi ke terminal lalu ketik `node ace make:controller Second`, nantinya kamu akan melihat tampilan seperti ini:
+
+```bash
+hudya@perogeremmer-pc:~/code/perogeremmer/hello-world$ node ace make:controller Second
+DONE:    create app/controllers/seconds_controller.ts
+```
+
+Sekarang buka `app/controllers/seconds_controller.ts` lalu isi dengan kode berikut:
+
+```typescript
+import type { HttpContext } from '@adonisjs/core/http'
+
+export default class SecondsController {
+  /**
+   * Display a list of resource
+   */
+  async index({ view }: HttpContext) {
+    return view.render("pages/second");
+  }
+}
+```
+
+Sekarang buat file baru pada di dalam folder `resources/views/pages` dengan nama `second.edge`, file ini akan sejajar dengan `home.edge` lalu isi dengan kode berikut:
+
+```jinja
+@base()
+@slot("content")
+<div class="container mt-5">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h5 class="mb-4">Ini adalah halaman kedua</h5>
+      <p>Dengan template, kamu bisa memiliki base yang sama dan hanya fokus mengisi kontennya saja.</p>
+    </div>
+  </div>
+</div>
+@end
+@end
+```
+
+Sekarang pastikan kamu mengubah `start/routes.ts` dengan menambahkan rute `SecondsController` seperti kode di bawah ini:
+
+```typescript
+/*
+|--------------------------------------------------------------------------
+| Routes file
+|--------------------------------------------------------------------------
+|
+| The routes file is used for defining the HTTP routes.
+|
+*/
+
+import router from '@adonisjs/core/services/router'
+
+import TodosController from '#controllers/todos_controller'
+import SecondsController from '#controllers/seconds_controller'
+
+
+router.get('/todo', [TodosController, 'index'])
+router.get('/second', [SecondsController, 'index'])
+
+
+router.get('/', () => {
+  return 'Hello world from the home page.'
+})
+
+router.get('/about', () => {
+  return 'This is the about page.'
+})
+
+router.get('/posts/:id', ({ params }) => {
+  return `This is post with id ${params.id}`
+})
+```
+
+
+Sekarang jalankan kembali dengan `npm run dev` lalu akses `localhost:3333/todo` dan `localhost:3333/second` lalu lihat hasilnya:
+
+![alt text](./assets/1.gif)
