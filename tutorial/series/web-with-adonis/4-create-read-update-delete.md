@@ -396,8 +396,9 @@ Berbeda dengan kode sebelumnya, kita menggunakan fungsi `router.resource` karena
 - create: /todo/create `GET`
 - store: /todo `POST`
 - show: /todo/{id} `GET`
+- edit: /todo/{id}/edit `GET`
 - update: /todo/{id} `PUT`
-- DELETE: /todo/{id} `DELETE`
+- delete: /todo/{id} `DELETE`
 
 Sehingga secara teori kita tidak perlu repot-repot membuat URL tersebut.
 
@@ -516,3 +517,298 @@ mysql> select * from todos;
 +----+-----------------+---------------------+--------+---------------------+---------------------+------------+
 12 rows in set (0.00 sec)
 ```
+
+### Operasi Update
+
+Agar operasi Update dan Delete berhasil, kita perlu mengubah konfigurasi spoofing pada Adonis terlebih dahulu.
+
+> The form method on an HTML form can only be set to GET, or POST, making it impossible to leverage restful HTTP methods.
+
+Secara teori, form pada HTML hanya dapat diset `GET` atau `POST`. Method `PUT`, `PATCH`, dan `DELETE` merupakan method RESTful yang biasanya dilakukan dengan metode HTTP untuk API.
+
+Namun, kita tetap dapat melakukannya dengan cara konfigurasi spoofing. Buka file `config/app.ts` lalu ganti nilai   `allowMethodSpoofing: false` menjadi  `allowMethodSpoofing: true`, perhatikan tanda komanya jangan sampai terhapus atau nanti akan ada error.
+
+Sekarang kembali ke `todos_controller.ts` dan ubah kode pada fungsi `edit` dan `update`:
+
+```typescript
+async edit({ view, params }: HttpContext) {
+  const data = await Todo.findBy('id', params.id)
+  return view.render("pages/edit", { todo: data })
+}
+
+/**
+ * Handle form submission for the edit action
+ */
+async update({ params, request, response }: HttpContext) {
+
+  const todo = await Todo.findByOrFail('id', params.id)
+  const body = await request.body()
+
+  todo.title = body.title
+  todo.description = body.description
+  todo.status = body.status
+
+  await todo.save()
+
+  return response.redirect().toRoute('todo.index')
+}
+```
+
+Pada kode di atas, fungsi edit akan dijalankan ketika kita ingin melakukan edit menggunakan id dan nantinya akan diarahkan ke halaman `edit.edge` dengan membawakan data todo dalam atribut `todo`.
+
+Sedangkan method `update` akan bekerja ketika tombol submit nantinya ditekan sehingga akan memperbarui data yang sudah kita submit.
+
+Kemudian buat file baru bernama `edit.edge` pada `resources/views/pages` dan masukkan kode di bawah ini:
+
+```jinja
+@base()
+@slot("content")
+<div class="container mt-5">
+  <div class="row mb-4">
+    <div class="col-6">
+      <h5 class="mb-4">Buat Todo Baru</h5>
+
+      <form method="POST" action="{{ route('todo.update', {id: todo.id}) }}?_method=PUT">
+        {{ csrfField() }}
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Place your title here..."
+            value="{{ todo.title }}">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" rows="3" placeholder="Place your description here...."
+            name="description">{{ todo.description }}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select class="form-control" id="status" name="status">
+            <option value="TODO" {{ todo.status=='TODO' ? 'selected' : '' }}>TODO</option>
+            <option value="ONGOING" {{ todo.status=='ONGOING' ? 'selected' : '' }}>ON GOING</option>
+            <option value="DONE" {{ todo.status=='DONE' ? 'selected' : '' }}>DONE</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-md btn-info" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@end
+@end
+```
+
+Dapat dilihat bahwa kita mengambil nilai dari masing-masing objek seperti title, description hingga kita membuat kondisi pada selection untuk memeriksa apakah statusnya todo, ongoing, atau done.
+
+Apabila kalian perhatikan pada bagian action kita menggunakan nilai `action="{{ route('todo.update', {id: todo.id}) }}?_method=PUT"` dimana kita mengaktifkan spoofing pada `_method=PUT`. Artinya kita mengubah request tersebut walaupun methodnya `POST` menjadi `PUT`.
+
+Terakhir, ubah kode `home.edge` pada bagian looping agar menjadi seperti ini:
+
+```typescript
+@each(todo in todos)
+  <tr>
+    <td>{{ todo.title }}</td>
+    <td>{{ todo.description }}</td>
+    <td>{{ todo.createdAt }}</td>
+    <td>
+      <span class="badge badge-info text-white ">{{ todo.status }}</span>
+    </td>
+    <td>
+      <div class="btn-group " role="group " aria-label="Basic example ">
+        <a href="{{ route('todo.edit', {id: todo.id}) }} " class="btn btn-info text-white ">
+          <i class='bx bx-pencil'></i>
+        </a>
+        <a href="# " class="btn btn-danger text-white ">
+          <i class='bx bx-trash'></i>
+        </a>
+      </div>
+    </td>
+  </tr>
+@end
+```
+
+Kita hilangkan bagian check dan kita ubah URL untuk bagian edit dengan `href="{{ route('todo.edit', {id: todo.id}) }} "`, artinya untuk parameter id sesuai kebutuhan dari dasar routing, kita isi dengan nilai id dari todo tersebut.
+
+![alt text](./assets/4.gif)
+
+### Operasi Delete
+
+Pertama, kita perlu mengubah kode pada controller todo secara keseluruhan agar menjadi seperti ini:
+
+```typescript
+import type { HttpContext } from '@adonisjs/core/http'
+import Todo from '#models/todo'
+import { DateTime } from 'luxon'
+
+export default class TodosController {
+  /**
+   * Display a list of resource
+   */
+  async index({ view }: HttpContext) {
+    const allTodos = await Todo.query().whereNull('deleted_at').orderBy('created_at', 'desc')
+    return view.render("pages/home", { todos: allTodos })
+  }
+
+  /**
+   * Display form to create a new record
+   */
+  async create({ view }: HttpContext) {
+    return view.render("pages/create")
+  }
+
+  /**
+   * Handle form submission for the create action
+   */
+  async store({ request, response }: HttpContext) {
+    const todo = new Todo()
+    const body = await request.body()
+
+    todo.title = body.title
+    todo.description = body.description
+    todo.status = "TODO"
+
+    await todo.save()
+
+    return response.redirect().toRoute('todo.index')
+  }
+
+  /**
+   * Show individual record
+   */
+  async show({ params }: HttpContext) { }
+
+  /**
+   * Edit individual record
+   */
+async edit({ view, params }: HttpContext) {
+  const data = await Todo.findBy('id', params.id)
+  return view.render("pages/edit", { todo: data })
+}
+
+/**
+ * Handle form submission for the edit action
+ */
+async update({ params, request, response }: HttpContext) {
+
+  const todo = await Todo.findByOrFail('id', params.id)
+  const body = await request.body()
+
+  todo.title = body.title
+  todo.description = body.description
+  todo.status = body.status
+
+  await todo.save()
+
+  return response.redirect().toRoute('todo.index')
+}
+
+  /**
+   * Delete record
+   */
+  async destroy({ params, response }: HttpContext) {
+    const todo = await Todo.findByOrFail('id', params.id)
+    todo.deletedAt = DateTime.now()
+
+    await todo.save()
+
+    return response.redirect().toRoute('todo.index')
+  }
+}
+```
+
+Perubahan yang terjadi:
+
+Pertama, kita mengimport library Luxon untuk datetime karena Adonis membutuhkan library tersebut untuk verifikasi tipe data datetime.
+
+Kemudian untuk metode destroy, karena kita menggunakan soft delete, kita mengisi kolom deleted_at agar diisi dengan waktu pada saat ini.
+
+Terakhir, untuk method index kita ubah cara kita menampilkan todo, yaitu kita tampilkan data yang deleted at nya kosong dan diurutkan berdasarkan waktu dibuat.
+
+Terakhir, kita ubah file `home.edge` agar menjadi seperti ini:
+
+```jinja
+@base()
+@slot("content")
+<div class="container mt-5">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h5 class="mb-4">Judul Halaman</h5>
+      <table class="table table-hover ">
+        <thead>
+          <tr>
+            <th scope="col ">Title</th>
+            <th scope="col ">Description</th>
+            <th scope="col ">Created At</th>
+            <th scope="col ">Status</th>
+            <th scope="col ">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @each(todo in todos)
+          <tr>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.description }}</td>
+            <td>{{ todo.createdAt }}</td>
+            <td>
+              <span class="badge badge-info text-white ">{{ todo.status }}</span>
+            </td>
+            <td>
+              <div class="btn-group " role="group " aria-label="Basic example ">
+                <a href="{{ route('todo.edit', {id: todo.id}) }} " class="btn btn-info text-white ">
+                  <i class='bx bx-pencil'></i>
+                </a>
+                <form action="{{ route('todo.destroy', {id: todo.id}) }}?_method=DELETE"
+                  method="POST"
+                  onsubmit="return confirm('Are you sure want to delete data?')">
+                  {{ csrfField() }}
+                  <button type="submit" class="btn btn-danger text-white ">
+                    <i class='bx bx-trash'></i>
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          @end
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+@end
+@end
+```
+
+Kita menambahkan form action untuk menghapus data yang mana action ini akan diarahkan ke fungsi `destroy`.
+
+Tak lupa kita mengisi spoofing URL dengan `_method=DELETE` karena kita akan mengakses RESTful dengan method `DELETE`.
+
+Terakhir jalankan kembali dan lihat hasilnya sebagai berikut:
+
+![alt text](./assets/5.gif)
+
+Sekarang kita bisa lihat juga pada database menjadi seperti ini:
+
+```plain
+mysql> select * FROM todos;
++----+-----------------+---------------------+---------+---------------------+---------------------+---------------------+
+| id | title           | description         | status  | created_at          | updated_at          | deleted_at          |
++----+-----------------+---------------------+---------+---------------------+---------------------+---------------------+
+|  1 | Judul Todo ke-0 | Deskripsi Todo ke-0 | TODO    | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL                |
+|  2 | Judul Todo ke-1 | Deskripsi Todo ke-1 | TODO    | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL                |
+|  3 | Judul Todo ke-2 | Deskripsi Todo ke-2 | TODO    | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL                |
+|  4 | Judul Todo ke-3 | Deskripsi Todo ke-3 | TODO    | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL                |
+|  5 | Judul Todo ke-4 | Deskripsi Todo ke-4 | TODO    | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL                |
+|  6 | Judul Todo ke-5 | Deskripsi Todo ke-5 | TODO    | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL                |
+|  7 | Judul Todo ke-6 | Deskripsi Todo ke-6 | TODO    | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL                |
+|  8 | Judul Todo ke-7 | Deskripsi Todo ke-7 | TODO    | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL                |
+|  9 | Judul Todo ke-8 | Deskripsi Todo ke-8 | TODO    | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL                |
+| 10 | Judul Todo ke-9 | Deskripsi Todo ke-9 | TODO    | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL                |
+| 11 | Todo Test       | Test Todo           | TODO    | 2024-08-13 01:32:31 | 2024-08-13 07:58:51 | 2024-08-13 07:58:51 |
+| 12 | Todo Baru-2     | Todo Baru-2         | ONGOING | 2024-08-13 01:48:22 | 2024-08-13 07:58:48 | 2024-08-13 07:58:48 |
++----+-----------------+---------------------+---------+---------------------+---------------------+---------------------+
+12 rows in set (0.00 sec)
+```
+
+
+Viola, sudah berhasil menyelesaikan CRUD :smile:
