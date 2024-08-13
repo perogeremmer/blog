@@ -194,6 +194,8 @@ Viola, sepuluh data awal sudah berhasil kita tambahkan!
 
 ## Operasi Create, Read, Update, dan Delete
 
+### Operasi Read
+
 Setelah berhasil membuat data awal, kita akan coba untuk membuat CRUD yang menjadi tujuan utama. Sekarang hapus kedua file `seconds_controller.ts` dan `todos_controller.ts` karena kita sudah tidak membutuhkannya.
 
 Alasan kita tidak membutuhkan `todos_controller.ts` adalah karena saya ingin memberitahu cara membuat controller dengan konsep restful dimana sudah tersedia banyak method bawaan, masukkan perintah berikut pada terminal:
@@ -385,10 +387,132 @@ Terakhir, file `start/routes.ts` kita ubah terlebih dahulu agar bersih dari kode
 import router from '@adonisjs/core/services/router'
 import TodosController from '#controllers/todos_controller'
 
-
-router.get('/todo', [TodosController, 'index'])
+router.resource('/todo', TodosController)
 ```
+
+Berbeda dengan kode sebelumnya, kita menggunakan fungsi `router.resource` karena fungsi ini otomatis mendeteksi fungsi-fungsi yang ada pada todo controller menuju url sebagai berikut:
+
+- index: /todo `GET`
+- create: /todo/create `GET`
+- store: /todo `POST`
+- show: /todo/{id} `GET`
+- update: /todo/{id} `PUT`
+- DELETE: /todo/{id} `DELETE`
+
+Sehingga secara teori kita tidak perlu repot-repot membuat URL tersebut.
 
 Sekarang coba jalankan `npm run dev` lalu akses `localhost:3333/todo`.
 
 ![alt text](./assets/2.gif)
+
+### Operasi Create
+
+Pertama kita perlu membuat tampilan create terlebih dahulu, buat file baru bernama `create.edge` pada folder `resources/views/pages`, lalu masukkan kode berikut:
+
+```jinja
+@base()
+@slot("content")
+<div class="container mt-5">
+  <div class="row mb-4">
+    <div class="col-6">
+      <h5 class="mb-4">Buat Todo Baru</h5>
+
+      <form method="POST" action="{{ route('todo.store') }}">
+        {{ csrfField() }}
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Place your title here...">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" rows="3"
+            placeholder="Place your description here...." name="description"></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-md btn-info" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@end
+@end
+```
+
+URL Action pada kode di atas merujuk kepada class todo controller fungsi store, dimana URL akan diubah menjadi `/todo` dengan method `POST`.
+
+Pada kode di atas juga ada fungsi `csrField()` dimana fungsi ini akan membuat kolom token csrf untuk mencegah serangan Cross Site Scripting (XSS Attack), inilah salah satu kelebihan adonis yang mana fitur ini juga ada pada laravel.
+
+Sekarang ubah kode todo controller pada fungsi / method `create` dan `store` menjadi seperti ini:
+
+```typescript
+export default class TodosController {
+  /**
+   * Display a list of resource
+   */
+  async index({ view }: HttpContext) {
+    const allTodos = await Todo.all()
+    return view.render("pages/home", { todos: allTodos })
+  }
+
+  /**
+   * Display form to create a new record
+   */
+  async create({ view }: HttpContext) {
+    return view.render("pages/create")
+  }
+
+  /**
+   * Handle form submission for the create action
+   */
+  async store({ request, response }: HttpContext) {
+    const todo = new Todo()
+    const body = await request.body()
+
+    todo.title = body.title
+    todo.description = body.description
+    todo.status = "TODO"
+
+    await todo.save()
+
+    return response.redirect().toRoute('todo.index')
+  }
+```
+
+Fungsi `create` akan menampilkan halaman `pages/create.edge` sedangkan fungsi `store` akan menjadi fungsi yang menuliskan data pada database melalui model Todo.
+
+Pada fungsi `store` kita inisiasi model todo dan simpan semua nilai body pada variabel bernama body, kemudian kita assign masing-masing nilai pada objek todo dengan nilai dari body sesuai dengan name dari masing-masing atribut html tag yang kita kirimkan. Untuk status kita beri nilai default saja yaitu `TODO`.
+
+Kemudian kita panggil fungsi `todo.save()` untuk mengeksekusi perintah `INSERT INTO` sesuai atribut yang kita set.
+
+Terakhir kita arahkan responnya menuju rute fungsi `todo.index`, yang mana URLnya adalah `/todo`.
+
+> [!NOTE]
+> Apabila kamu bingung mengapa ada sintaks `await`, `await` adalah sintaks untuk membuat baris tersebut dieksekusi sebelum baris selanjutnya. Hal ini dilakukan karena Javascript pada umumnya bersifat asynchronous, sehingga baris selanjutnya bisa saja dieksekusi tanpa menunggu baris yang sedang berjalan. Dengan menggunakan sintaks `await` kita dapat memaksa program untuk menunggu proses pada baris tersebut hingga selesai sebelum melanjutkan proses ke baris selanjutnya.
+
+Sekarang jalankan kembali dan lihat hasilnya, untuk mengakses halaman create kamu dapat mengunjungi `localhost:3333/create`.
+
+![alt text](./assets/3.gif)
+
+Data pun sudah pasti masuk ke database :smile:
+
+```bash
+mysql> select * from todos;
++----+-----------------+---------------------+--------+---------------------+---------------------+------------+
+| id | title           | description         | status | created_at          | updated_at          | deleted_at |
++----+-----------------+---------------------+--------+---------------------+---------------------+------------+
+|  1 | Judul Todo ke-0 | Deskripsi Todo ke-0 | TODO   | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL       |
+|  2 | Judul Todo ke-1 | Deskripsi Todo ke-1 | TODO   | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL       |
+|  3 | Judul Todo ke-2 | Deskripsi Todo ke-2 | TODO   | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL       |
+|  4 | Judul Todo ke-3 | Deskripsi Todo ke-3 | TODO   | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL       |
+|  5 | Judul Todo ke-4 | Deskripsi Todo ke-4 | TODO   | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL       |
+|  6 | Judul Todo ke-5 | Deskripsi Todo ke-5 | TODO   | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL       |
+|  7 | Judul Todo ke-6 | Deskripsi Todo ke-6 | TODO   | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL       |
+|  8 | Judul Todo ke-7 | Deskripsi Todo ke-7 | TODO   | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL       |
+|  9 | Judul Todo ke-8 | Deskripsi Todo ke-8 | TODO   | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL       |
+| 10 | Judul Todo ke-9 | Deskripsi Todo ke-9 | TODO   | 2024-08-13 00:55:12 | 2024-08-13 00:55:12 | NULL       |
+| 11 | Todo Test       | Test Todo           | TODO   | 2024-08-13 01:32:31 | 2024-08-13 01:32:31 | NULL       |
+| 12 | Todo Baru 1     | Todo Baru-1         | TODO   | 2024-08-13 01:48:22 | 2024-08-13 01:48:22 | NULL       |
++----+-----------------+---------------------+--------+---------------------+---------------------+------------+
+12 rows in set (0.00 sec)
+```
