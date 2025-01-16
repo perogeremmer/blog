@@ -6,29 +6,9 @@ Dalam mengakses antara server dan klien, MongoDB secara garis besar sama seperti
 
 ```mermaid
 graph TD
-    subgraph Clients
-        A[MongoDB Shell]
-        B[Application with MongoDB Driver]
-        C[MongoDB Compass GUI]
-    end
-
-    subgraph "MongoDB Server"
-        D[mongod Process]
-        E[Database Storage]
-    end
-
-    A -->|Queries/Commands| D
-    B -->|CRUD Operations| D
-    C -->|Management/Queries| D
-    D -->|Read/Write| E
-
-    subgraph "Distributed Setup"
-        F[Replica Set]
-        G[Sharded Cluster]
-    end
-
-    D -.->|Can be configured as| F
-    D -.->|Can be configured as| G
+    A[Clients] -->|Queries/Operations| D
+    D[mongod Process] -->|Read/Write| E[Database Storage]
+    D -.->|Can be configured as| F[Replica Set / Sharding]
 ```
 
 ## MongoDB Server
@@ -61,51 +41,12 @@ Berikut gambaran cluster skalabilitas dalam mongoDB.
 
 ```mermaid
 graph TD
-    subgraph "Clients"
-        C1[Client 1]
-        C2[Client 2]
-        C3[Client 3]
-    end
-
-    subgraph "MongoDB Cluster"
-        subgraph "Shard 1"
-            S1[Primary]
-            S1R1[Secondary]
-            S1R2[Secondary]
-            S1 --- S1R1
-            S1 --- S1R2
-        end
-
-        subgraph "Shard 2"
-            S2[Primary]
-            S2R1[Secondary]
-            S2R2[Secondary]
-            S2 --- S2R1
-            S2 --- S2R2
-        end
-
-        subgraph "Config Servers"
-            CS1[Config Server 1]
-            CS2[Config Server 2]
-            CS3[Config Server 3]
-            CS1 --- CS2
-            CS2 --- CS3
-            CS3 --- CS1
-        end
-
-        MR1[Mongos Router 1]
-        MR2[Mongos Router 2]
-
-        MR1 --> S1
-        MR1 --> S2
-        MR2 --> S1
-        MR2 --> S2
-
-        MR1 -.-> CS1
-        MR2 -.-> CS1
-    end
-
-    C1 --> MR1
-    C2 --> MR1
-    C3 --> MR2
+    C[Client] --> MR[MongoDB Router]
+    MR -->|Read Write| P[Primary]
+    MR -->|Read| S1[Secondary 1]
+    MR -->|Read| S2[Secondary 2]
+    P -->|Replication| S1
+    P -->|Replication| S2
+    S1 -.->|Sync| P
+    S2 -.->|Sync| P
 ```
