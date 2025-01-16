@@ -103,13 +103,13 @@ Untuk terkoneksi, kita akan membutuhkan GUI Client, pertama klik connect.
 
 ![alt text](./assets/3-installation/image-6.png)
 
-Kemudian pilih compass, kita akan menggunakan Shell untuk memaksimalkan pembelajaran.
+Kemudian pilih shell, kita akan menggunakan Shell untuk memaksimalkan pembelajaran.
 
 Klik Shell.
 
 ![alt text](./assets/3-installation/image-9.png)
 
-Pilih windows, lalu pastikan install from MSI. Klik download lalu install seperti biasa.
+Pilih OS yang sesuai dengan perangkat. Klik download lalu install seperti biasa.
 
 ![alt text](./assets/3-installation/image-10.png)
 
@@ -223,6 +223,6 @@ Atlas atlas-969x7s-shard-0 [primary] latihanmongo> db.users.find();
 
 Secara teori, kita bisa saja menambahkan ID dengan angka seperti 1,2,3,4 tapi dalam kasus MongoDB hal tersebut tidak diperlukan.
 
-![alt text](image-11.png)
+![alt text](./assets/3-installation/image-11.png)
 
 Berdasarkan dokumen [MongoDB](https://www.mongodb.com/resources/products/platform/mongodb-auto-increment#:~:text=To%20ensure%20your%20database%20remains,can%20result%20in%20data%20duplication.), mereka juga menyarankan untuk tidak menggunakan autoincrement.
