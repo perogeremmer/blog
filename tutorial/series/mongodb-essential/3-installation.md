@@ -226,3 +226,48 @@ Secara teori, kita bisa saja menambahkan ID dengan angka seperti 1,2,3,4 tapi da
 ![alt text](./assets/3-installation/image-11.png)
 
 Berdasarkan dokumen [MongoDB](https://www.mongodb.com/resources/products/platform/mongodb-auto-increment#:~:text=To%20ensure%20your%20database%20remains,can%20result%20in%20data%20duplication.), mereka juga menyarankan untuk tidak menggunakan autoincrement.
+
+
+## Masalah Dengan MongoDB Atlas Cluster
+
+Salah satu masalah paling umum adalah IP kita yang akan berubah ketika kita restart PC ataupun terhubung kembali dengan network.
+
+Contohnya saat login:
+
+```bash
+hudya@perogeremmer-pc:~$ mongosh "mongodb+srv://cluster0.0kfik.mongodb.net/" --apiVersion 1 --username admin
+Enter password: ****************
+Current Mongosh Log ID:	678cab83665ab983e8e9a1a3
+Connecting to:		mongodb+srv://<credentials>@cluster0.0kfik.mongodb.net/?appName=mongosh+2.0.0
+MongoServerSelectionError: 40D8F0D57B790000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../deps/openssl/openssl/ssl/record/rec_layer_s3.c:1586:SSL alert number 80
+. It looks like this is a MongoDB Atlas cluster. Please ensure that your Network Access List allows connections from your IP.
+```
+
+Kita tidak perlu panik, cukup login ke dalam dashboard lalu pergi ke **network access**.
+
+![alt text](./assets/3-installation/network-access.png)
+
+Klik **Add Current IP Address** lalu tunggu hingga selesai. Refresh halamannya dan tunggu karena proses penambahannya sedang dilakukan. Setelah active segera coba kembali.
+
+Hasil:
+
+
+```bash
+hudya@perogeremmer-pc:~$ mongosh "mongodb+srv://cluster0.0kfik.mongodb.net/" --apiVersion 1 --username admin
+Enter password: ****************
+Current Mongosh Log ID:	678cab83665ab983e8e9a1a3
+Connecting to:		mongodb+srv://<credentials>@cluster0.0kfik.mongodb.net/?appName=mongosh+2.0.0
+MongoServerSelectionError: 40D8F0D57B790000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../deps/openssl/openssl/ssl/record/rec_layer_s3.c:1586:SSL alert number 80
+. It looks like this is a MongoDB Atlas cluster. Please ensure that your Network Access List allows connections from your IP.
+hudya@perogeremmer-pc:~$ mongosh "mongodb+srv://cluster0.0kfik.mongodb.net/" --apiVersion 1 --username admin
+Enter password: ****************
+Current Mongosh Log ID:	678cad8a9a05e75c5db1b0ca
+Connecting to:		mongodb+srv://<credentials>@cluster0.0kfik.mongodb.net/?appName=mongosh+2.0.0
+Using MongoDB:		8.0.4 (API Version 1)
+Using Mongosh:		2.0.0
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+Atlas atlas-969x7s-shard-0 [primary] test> 
+```

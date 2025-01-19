@@ -14,7 +14,7 @@ MongoDB mendukung beberapa tipe data utama:
 
 4. **Boolean**: Nilai true atau false. Contoh: `"isActive": true`
 
-5. **Date**: Menyimpan tanggal dan waktu. Contoh: `"createdAt": ISODate("2023-11-15T12:00:00Z")`
+5. **Date**: Menyimpan tanggal dan waktu. Contoh: `"createdAt": ISODate("2023-11-15T12:00:00Z")`. Bisa juga tanpa sintaks `ISODate`, cukup gunakan format yang sama.
 
 6. **Null**: Merepresentasikan nilai null atau tidak ada. Contoh: `"middleName": null`
 
