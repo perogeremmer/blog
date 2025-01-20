@@ -195,7 +195,7 @@ Sebagai contoh apabila menggunakan `docker-compose.yaml` di atas kalian bisa men
 ```text
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_USER=user
+DB_USER=adonis
 DB_PASSWORD=secret-password
 DB_DATABASE=adonis
 ```
