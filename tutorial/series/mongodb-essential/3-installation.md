@@ -1,5 +1,17 @@
 # 3 - Instalasi
 
+- [3 - Instalasi](#3---instalasi)
+  - [Instalasi Langsung pada Sistem Operasi](#instalasi-langsung-pada-sistem-operasi)
+    - [Windows](#windows)
+    - [macOS dan Linux](#macos-dan-linux)
+  - [Menggunakan Docker](#menggunakan-docker)
+  - [MongoDB Atlas (Cloud Service)](#mongodb-atlas-cloud-service)
+  - [Praktik](#praktik)
+    - [Register](#register)
+    - [Membuat database](#membuat-database)
+  - [Terhubung dengan Database](#terhubung-dengan-database)
+  - [Masalah Dengan MongoDB Atlas Cluster](#masalah-dengan-mongodb-atlas-cluster)
+
 MongoDB menawarkan beberapa opsi instalasi yang fleksibel, memungkinkan pengguna untuk memilih metode yang paling sesuai dengan kebutuhan dan lingkungan mereka. Berikut adalah tiga cara umum untuk menginstal dan mengkonfigurasi MongoDB:
 
 ## Instalasi Langsung pada Sistem Operasi
@@ -227,7 +239,6 @@ Secara teori, kita bisa saja menambahkan ID dengan angka seperti 1,2,3,4 tapi da
 
 Berdasarkan dokumen [MongoDB](https://www.mongodb.com/resources/products/platform/mongodb-auto-increment#:~:text=To%20ensure%20your%20database%20remains,can%20result%20in%20data%20duplication.), mereka juga menyarankan untuk tidak menggunakan autoincrement.
 
-
 ## Masalah Dengan MongoDB Atlas Cluster
 
 Salah satu masalah paling umum adalah IP kita yang akan berubah ketika kita restart PC ataupun terhubung kembali dengan network.
@@ -251,7 +262,6 @@ Klik **Add Current IP Address** lalu tunggu hingga selesai. Refresh halamannya d
 
 Hasil:
 
-
 ```bash
 hudya@perogeremmer-pc:~$ mongosh "mongodb+srv://cluster0.0kfik.mongodb.net/" --apiVersion 1 --username admin
 Enter password: ****************
@@ -269,5 +279,5 @@ mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/sh
 
 For mongosh info see: https://docs.mongodb.com/mongodb-shell/
 
-Atlas atlas-969x7s-shard-0 [primary] test> 
+Atlas atlas-969x7s-shard-0 [primary] test>
 ```

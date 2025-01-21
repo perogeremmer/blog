@@ -1,5 +1,15 @@
 # 1 - Introduction
 
+- [1 - Introduction](#1---introduction)
+  - [MongoDB](#mongodb)
+  - [Features](#features)
+  - [Konsep Dasar MongoDB](#konsep-dasar-mongodb)
+  - [MongoDB vs RDBMS](#mongodb-vs-rdbms)
+    - [Model Data dan Skema](#model-data-dan-skema)
+    - [Relasi dan Transaksi](#relasi-dan-transaksi)
+    - [Skalabilitas dan Performa](#skalabilitas-dan-performa)
+    - [Query Language dan Use Cases](#query-language-dan-use-cases)
+
 ## MongoDB
 
 MongoDB adalah database dokumen NoSQL yang open-source. Dirancang untuk menyimpan data dalam format fleksibel, mirip dengan JSON, yang disebut BSON (Binary JSON). Keunikan MongoDB terletak pada kemampuannya untuk menangani data dengan struktur yang beragam dan kompleks.
@@ -32,21 +42,21 @@ Untuk memahami MongoDB, penting untuk mengenal beberapa konsep dasarnya:
 
 Pemahaman tentang konsep-konsep ini penting untuk mengoptimalkan penggunaan MongoDB dalam pengembangan aplikasi dan pengelolaan data.
 
-# MongoDB vs RDBMS
+## MongoDB vs RDBMS
 
-## Model Data dan Skema
+### Model Data dan Skema
 
 RDBMS menggunakan model data tabular dengan skema yang tetap, sedangkan MongoDB mengadopsi model data dokumen dengan skema yang fleksibel. Dalam RDBMS, struktur tabel bersifat kaku, dan perubahan memerlukan migrasi. Sebaliknya, MongoDB memungkinkan dokumen dalam koleksi yang sama memiliki struktur yang berbeda, memberikan fleksibilitas yang lebih besar.
 
-## Relasi dan Transaksi
+### Relasi dan Transaksi
 
 RDBMS mengandalkan foreign key untuk menghubungkan tabel, sementara MongoDB menggunakan referensi atau embedding dokumen untuk menyimpan data terkait. Dalam hal transaksi, RDBMS mendukung transaksi ACID sepenuhnya, sedangkan MongoDB baru mendukung transaksi ACID multi-dokumen sejak versi 4.0.
 
-## Skalabilitas dan Performa
+### Skalabilitas dan Performa
 
 RDBMS umumnya di-scale secara vertikal dengan meningkatkan kapasitas server, sementara MongoDB dirancang untuk scale secara horizontal dengan menambah lebih banyak server. Dalam hal performa, RDBMS optimal untuk operasi kompleks yang melibatkan banyak tabel, sedangkan MongoDB sangat cepat untuk operasi read/write pada data dokumen.
 
-## Query Language dan Use Cases
+### Query Language dan Use Cases
 
 RDBMS menggunakan SQL (Structured Query Language), sementara MongoDB menggunakan query language berbasis JSON. RDBMS ideal untuk aplikasi yang memerlukan transaksi kompleks dan integritas data yang ketat, sedangkan MongoDB cocok untuk aplikasi yang membutuhkan skalabilitas tinggi dan fleksibilitas data.
 

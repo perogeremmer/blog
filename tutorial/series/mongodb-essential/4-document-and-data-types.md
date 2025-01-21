@@ -1,5 +1,13 @@
 # 4 - Struktur Dokumen dan Tipe Data
 
+- [4 - Struktur Dokumen dan Tipe Data](#4---struktur-dokumen-dan-tipe-data)
+  - [Tipe Data di MongoDB](#tipe-data-di-mongodb)
+  - [Struktur Dokumen](#struktur-dokumen)
+  - [Fleksibilitas Skema dan Potensi Inkonsistensi di MongoDB](#fleksibilitas-skema-dan-potensi-inkonsistensi-di-mongodb)
+    - [Konsep Skema Fleksibel](#konsep-skema-fleksibel)
+    - [Contoh Inkonsistensi Struktur](#contoh-inkonsistensi-struktur)
+    - [Mengelola Inkonsistensi](#mengelola-inkonsistensi)
+
 MongoDB, sebagai database dokumen, menyimpan data dalam format BSON (Binary JSON). Hal ini memungkinkan fleksibilitas dalam struktur data dan mendukung berbagai tipe data.
 
 ## Tipe Data di MongoDB
