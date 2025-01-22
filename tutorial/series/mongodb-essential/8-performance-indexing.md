@@ -1,6 +1,6 @@
-# 8 - Performance Indexing
+# 8 - Indexing & Performance
 
-- [8 - Performance Indexing](#8---performance-indexing)
+- [8 - Indexing \& Performance](#8---indexing--performance)
   - [Overview](#overview)
   - [How Indexing Works](#how-indexing-works)
   - [Algoritma Index](#algoritma-index)
@@ -20,6 +20,7 @@
     - [Unique Index](#unique-index)
     - [Case Insensitive Index](#case-insensitive-index)
     - [Wildcard Index](#wildcard-index)
+  - [Performance Metrics](#performance-metrics)
 
 ## Overview
 
@@ -647,3 +648,11 @@ db.comments.createIndex({ "movie.$**": 1 });
 ```
 
 Kode di atas membuat wildcard index pada semua fields dalam subdokumen `movie`.
+
+## Performance Metrics
+
+Untuk melihat performance metrics maka pada kasus MongoDB Atlas Free Tier, kita bisa mengaksesnya pada dashboard seperti GIF berikut.
+
+![alt text](./assets/8-performance-indexing/1.gif)
+
+Di dalamnya akan tersedia *metric* sepert Opcounters dimana artinya operation counters atau seberapa sering query berjalan setiap detiknya, jumlah koneksi, jumlah size disk yang dipakai, dan bandwidth yang digunakan.
