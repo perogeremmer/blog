@@ -200,7 +200,7 @@ Tapi sejujurnya jangan panik, ini tidak akan mengubah bagaimana query bekerja, h
 ```bash
 # Tampilkan user yang phonenya null
 
-db.users.find({phone: {$e: null}});
+db.users.find({phone: {$eq: null}});
 ```
 
 ```bash
