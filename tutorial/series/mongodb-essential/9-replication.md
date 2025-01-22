@@ -21,52 +21,7 @@ Tidak memungkinkan untuk terhubung ke salah satu shard cluster menggunakan **Mon
 
 ## Alur Replikasi di MongoDB
 
-<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .small { font: italic 13px sans-serif; }
-    .heavy { font: bold 30px sans-serif; }
-    .label { font: normal 16px sans-serif; fill: #333; }
-    .small-label { font: normal 14px sans-serif; fill: #666; }
-  </style>
-
-  <!-- Primary Node -->
-  <rect x="100" y="50" width="200" height="300" rx="10" ry="10" fill="#4DB33D" />
-  <text x="200" y="90" text-anchor="middle" class="heavy" fill="white">Primary</text>
-  
-  <!-- Oplog in Primary -->
-  <rect x="120" y="120" width="160" height="100" rx="5" ry="5" fill="white" stroke="#333" />
-  <text x="200" y="145" text-anchor="middle" class="label">Oplog</text>
-  <line x1="130" y1="160" x2="270" y2="160" stroke="#333" stroke-width="1" />
-  <line x1="130" y1="180" x2="270" y2="180" stroke="#333" stroke-width="1" />
-  <line x1="130" y1="200" x2="270" y2="200" stroke="#333" stroke-width="1" />
-
-  <!-- Secondary Node -->
-  <rect x="500" y="50" width="200" height="300" rx="10" ry="10" fill="#589636" />
-  <text x="600" y="90" text-anchor="middle" class="heavy" fill="white">Secondary</text>
-
-  <!-- Oplog in Secondary -->
-  <rect x="520" y="120" width="160" height="100" rx="5" ry="5" fill="white" stroke="#333" />
-  <text x="600" y="145" text-anchor="middle" class="label">Oplog Copy</text>
-  <line x1="530" y1="160" x2="670" y2="160" stroke="#333" stroke-width="1" />
-  <line x1="530" y1="180" x2="670" y2="180" stroke="#333" stroke-width="1" />
-  <line x1="530" y1="200" x2="670" y2="200" stroke="#333" stroke-width="1" />
-
-  <!-- Replication Arrow -->
-  <line x1="300" y1="170" x2="480" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
-  <text x="390" y="155" text-anchor="middle" class="small-label">Oplog Sync</text>
-
-  <!-- Heartbeat Arrows -->
-  <line x1="300" y1="280" x2="480" y2="280" stroke="#666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
-  <line x1="480" y1="300" x2="300" y2="300" stroke="#666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
-  <text x="390" y="270" text-anchor="middle" class="small-label">Heartbeats</text>
-
-  <!-- Arrow Marker -->
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
-    </marker>
-  </defs>
-</svg>
+![alt text](./assets/9-replication/1.png)
 
 MongoDB menggunakan model replikasi yang disebut Replica Set. Berikut adalah alur replikasi di MongoDB:
 
@@ -165,50 +120,7 @@ Ketika sebuah secondary node terpilih menjadi primary baru:
 
 ## Perbandingan Replikasi MongoDB dan MySQL
 
-<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .heavy { font: bold 22px sans-serif; }
-    .label { font: normal 16px sans-serif; fill: #333; }
-    .small-label { font: normal 14px sans-serif; fill: #666; }
-  </style>
-
-  <!-- MongoDB Side -->
-  <rect x="450" y="50" width="300" height="300" rx="10" ry="10" fill="#4DB33D" />
-  <text x="600" y="85" text-anchor="middle" class="heavy" fill="white">MongoDB</text>
-
-  <!-- Primary in MongoDB -->
-  <rect x="470" y="100" width="260" height="100" rx="5" ry="5" fill="white" stroke="#333" />
-  <text x="600" y="130" text-anchor="middle" class="label">Primary</text>
-  <rect x="480" y="150" width="240" height="30" rx="5" ry="5" fill="#FFD700" />
-  <text x="600" y="170" text-anchor="middle" class="small-label">Oplog</text>
-
-  <!-- Secondary in MongoDB -->
-  <rect x="470" y="230" width="260" height="100" rx="5" ry="5" fill="white" stroke="#333" />
-  <text x="600" y="260" text-anchor="middle" class="label">Secondary</text>
-  <rect x="480" y="280" width="240" height="30" rx="5" ry="5" fill="#87CEFA" />
-  <text x="600" y="300" text-anchor="middle" class="small-label">Oplog Sync</text>
-
-  <!-- Replication Arrows -->
-  <line x1="200" y1="200" x2="200" y2="230" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
-  <line x1="600" y1="200" x2="600" y2="230" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
-
-  <!-- MySQL Side -->
-  <rect x="50" y="50" width="300" height="300" rx="10" ry="10" fill="#00758F" />
-  <text x="200" y="85" text-anchor="middle" class="heavy" fill="white">MySQL / RDS</text>
-  
-  <!-- Master in MySQL -->
-  <rect x="70" y="100" width="260" height="100" rx="5" ry="5" fill="white" stroke="#333" />
-  <text x="200" y="130" text-anchor="middle" class="label">Master</text>
-  <rect x="80" y="150" width="240" height="30" rx="5" ry="5" fill="#FFD700" />
-  <text x="200" y="170" text-anchor="middle" class="small-label">Binary Log</text>
-
-  <!-- Slave in MySQL -->
-  <rect x="70" y="230" width="260" height="100" rx="5" ry="5" fill="white" stroke="#333" />
-  <text x="200" y="260" text-anchor="middle" class="label">Slave</text>
-  <rect x="80" y="280" width="240" height="30" rx="5" ry="5" fill="#87CEFA" />
-  <text x="200" y="300" text-anchor="middle" class="small-label">Binlog Reader</text>
-
-</svg>
+![alt text](./assets/9-replication/2.png)
 
 | Aspek             | MongoDB                                         | MySQL                                                           |
 | ----------------- | ----------------------------------------------- | --------------------------------------------------------------- |
