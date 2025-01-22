@@ -35,10 +35,7 @@ db.inventories.updateMany({ category: "Smartphone" }, [
         $switch: {
           branches: [
             { case: { $lt: ["$discountedPrice", 5000000] }, then: "Budget" },
-            {
-              case: { $lt: ["$discountedPrice", 10000000] },
-              then: "Mid-range",
-            },
+            { case: { $lt: ["$discountedPrice", 10000000] }, then: "Mid-range", },
             { case: { $gte: ["$discountedPrice", 10000000] }, then: "Premium" },
           ],
           default: "Unknown",
