@@ -1,5 +1,10 @@
 # 7 - Building Todo List with Javascript
 
+- [7 - Building Todo List with Javascript](#7---building-todo-list-with-javascript)
+  - [Persiapan](#persiapan)
+  - [Membangun Struktur Folder](#membangun-struktur-folder)
+  - [Coding](#coding)
+
 Pada artikel ini kamu akan mencoba membuat todo list dengan Javascript. Tujuan dari artikel ini adalah menghubungkan MongoDB Atlas dengan CLI Javascript untuk membuat Todo List
 
 ## Persiapan
@@ -77,6 +82,8 @@ Kemudian, buatlah folder `app`. Setelah folder dibuat, dilanjutkan dengan membua
 
 Langkah terakhir buatlah file `mongodb.js` pada folder `connection` dan file `item.js` pada folder `service`.
 
+## Coding
+
 Sekarang isi file `mongodb.js` dengan kode berikut:
 
 ```javascript
@@ -102,6 +109,10 @@ async function connect() {
 
 module.exports = { connect, client };
 ```
+
+Kode di atas ditujukan untuk membuat file koneksi ke databas emongoDB, untuk db yang digunakan adalah `sample_db` yang otomatis dibuatkan apabila database tersebut belum ada.
+
+Collection yang akan digunakan adalah `items`.
 
 <br />
 <br />
@@ -153,6 +164,8 @@ class ItemService {
 
 module.exports = ItemService;
 ```
+
+Kode di atas ditujukan sebagai kode service yang mana kita mengadopsi modularisasi, kode di atas hanya bertujuan melakukan insert data ke database dengan objek database yang disimpan pada variable `this.collection`.
 
 <br />
 <br />
@@ -299,6 +312,15 @@ async function deleteItem(itemService) {
 
 main().catch(console.error);
 ```
+
+Kode di atas adalah keseluruhan business logic dari program Todo List menggunakan Javascript (Node JS). Empat fungsi yang dibangun adalah:
+
+- displayLatestItems
+- updateItem
+- deleteItem
+- insertItem
+
+Pada saat melakukan perubahan data, apabila pengguna tidak ingin merubah datanya maka cukup ditekan enter saja, sehingga program akan otomatis menggunakan data yang sudah tersedia pada database.
 
 <br />
 <br />
