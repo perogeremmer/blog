@@ -231,7 +231,7 @@ Atlas atlas-969x7s-shard-0 [primary] latihanmongo> db.users.find();
 ```
 
 > [!NOTE]
-> ID yang di-generate secara otoamtis oleh MongoDB adalah ObjectId, kita tidak perlu menggunakan ID increment ataupun ID dengan spesifik pattern seperti U001 karena ObjectId sudah di-tweak agar performanya lebih baik.
+> ID yang di-generate secara otomatis oleh MongoDB adalah ObjectId, kita tidak perlu menggunakan ID increment ataupun ID dengan spesifik pattern seperti U001 karena ObjectId sudah di-tweak agar performanya lebih baik.
 
 Secara teori, kita bisa saja menambahkan ID dengan angka seperti 1,2,3,4 tapi dalam kasus MongoDB hal tersebut tidak diperlukan.
 
@@ -281,3 +281,19 @@ For mongosh info see: https://docs.mongodb.com/mongodb-shell/
 
 Atlas atlas-969x7s-shard-0 [primary] test>
 ```
+
+
+Kadang koneksi akan terus masalah, oleh karena itu kita akan coba untuk tambahkan akses darimana saja. Buka halaman network access pada bagian security.
+
+![alt text](./assets/3-installation/network-list.png)
+
+Kemudian klik tombol allow access from anywhere
+
+![alt text](./assets/3-installation/network-list-2.png)
+
+IP akan berubah menjadi 0.0.0.0. Kemudian klik confirm.
+
+> [!WARNING]
+> Cara ini hanya untuk latihan saja karena sangat berbahaya untuk database production.
+
+IP kita yang DHCP akan berubah-ubah, oleh karena itu kita merubahnya agar dapat diakses dari IP mana saja untuk konteks latihan.

@@ -7,6 +7,7 @@
     - [Konsep Skema Fleksibel](#konsep-skema-fleksibel)
     - [Contoh Inkonsistensi Struktur](#contoh-inkonsistensi-struktur)
     - [Mengelola Inkonsistensi](#mengelola-inkonsistensi)
+  - [Mengganti Nama Kolom](#mengganti-nama-kolom)
 
 MongoDB, sebagai database dokumen, menyimpan data dalam format BSON (Binary JSON). Hal ini memungkinkan fleksibilitas dalam struktur data dan mendukung berbagai tipe data.
 
@@ -230,3 +231,52 @@ Namun ada beberapa hal yang dapat dilakukan untuk membuat data tetap konsisten.
 - Desain Aplikasi: Selalu cek keberadaan field sebelum mengaksesnya dalam aplikasi.
 
 - Dokumentasi: Pastikan struktur data didokumentasikan dengan baik, termasuk field opsional.
+
+## Mengganti Nama Kolom
+
+Pada beberapa kasus, mungkin saja ada kondisi dimana pengembang typo pada saat memasukkan key atau kolom.
+
+Cukup masukkan perintah di bawah ini untuk rename kolom tersebut:
+
+```javascript
+db.[collection].updateMany(
+   { "kolomsalah": { $ne: null } },
+   { $rename: { "kolomsalah": "kolombaru" } }
+)
+```
+
+Contoh:
+
+```javascript
+db.users.updateMany({ name2: { $ne: null } }, { $rename: { name: "name2" } });
+```
+
+Atau:
+
+```bash
+db.users.updateMany(
+    {},
+   { $rename: { "name": "name2" } }
+)
+```
+
+Query pertama memungkinkan kamu untuk memfilter dokumen berdasarkan kondisi sedangkan query kedua adalah mengupdate semua document.
+
+Apabila kita ingin menghapus kolom tersebut maka bisa menggunakan query berikut:
+
+```javascript
+db.users.updateMany(
+    { phone: { $exists: true } }, 
+    { $unset: { phone: 1 } }
+);
+```
+
+Atau kalau mau tanpa filter:
+
+```javascript
+db.users.updateMany(
+    {}, 
+    { $unset: { phone: 1 } }
+);
+```
+
