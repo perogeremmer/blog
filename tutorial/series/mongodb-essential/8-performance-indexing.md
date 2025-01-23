@@ -506,7 +506,7 @@ Untuk menghapus index pada sebuah collection terdapat dua perintah, yaitu:
 ```bash
 db.collection.dropIndex("nama_index") // untuk index satuan
 
-db.collection.dropIndex("*") // untuk semua index
+db.collection.dropIndexes("*") // untuk semua index
 ```
 
 ## Another Example Index
