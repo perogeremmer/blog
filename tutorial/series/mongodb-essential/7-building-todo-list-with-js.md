@@ -84,6 +84,22 @@ Langkah terakhir buatlah file `mongodb.js` pada folder `connection` dan file `it
 
 ## Coding
 
+Pertama isi file `.env` dengan kode berikut:
+
+```plain
+MONGODB_URI=mongodb+srv://<username>:<password>@<host>
+```
+
+Contoh:
+
+```plain
+MONGODB_URI=mongodb+srv://admin:***@cluster0.0kfik.mongodb.net
+```
+
+<br/>
+<br/>
+<br/>
+
 Sekarang isi file `mongodb.js` dengan kode berikut:
 
 ```javascript
