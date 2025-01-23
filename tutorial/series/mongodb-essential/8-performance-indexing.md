@@ -259,7 +259,7 @@ db.movies.find({ year: { $gt: 2000 } }).explain("executionStats");
 
 Kamu akan melihat hasil seperti ini.
 
-```json
+```bash
 {
   explainVersion: '1',
   queryPlanner: {
