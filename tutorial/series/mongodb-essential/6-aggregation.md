@@ -26,7 +26,7 @@ db.inventories.updateMany({ category: "Smartphone" }, [
   {
     $set: {
       discountedPrice: { $multiply: ["$price", 0.9] },
-      lastUpdated: "$$NOW",
+      updated_at: "$$NOW",
     },
   },
   {
