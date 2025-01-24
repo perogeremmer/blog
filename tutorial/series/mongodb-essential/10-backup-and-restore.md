@@ -55,6 +55,12 @@ Contoh:
 mongoexport --uri mongodb+srv://admin:*****@cluster0.0kfik.mongodb.net/latihanbaru --collection inventories --type csv --out latihan.csv --fields _id,name,category,stock
 ```
 
+Gunakan asterix untuk menampilkan semua kolom:
+
+```bash
+mongoexport --uri mongodb+srv://admin:*****@cluster0.0kfik.mongodb.net/latihanbaru --collection inventories --type csv --out latihan.csv --fields "*"
+```
+
 Ketika dijalankan:
 
 ```bash
