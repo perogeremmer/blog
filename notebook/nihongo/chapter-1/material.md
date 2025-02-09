@@ -20,7 +20,7 @@ Contoh:
 
 - わたしは きんこういん **です** (watashiwa kinkouin **desu**)
   - Saya adalah pegawai bank
-- フデャさんは せんせい **です** (fudya sanwa sensei desu)
+- フデャさんは せんせい **です** (fudya sanwa sensei **desu**)
   - Saudara Hudya adalah seorang dosen
 
 # Kata Benda は (Ha) dan Kata Benda じゃ（では）ありません (ja (dewa) arimasen)
