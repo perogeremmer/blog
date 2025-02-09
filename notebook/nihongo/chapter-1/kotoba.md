@@ -1,0 +1,26 @@
+# Kotoba - Chapter 1
+
+-  わたし (watashi): Saya
+-  あなた (anata): Anda
+-  あのひと (anohito): Orang itu
+-  あのかた (anokata): Beliau (Formal)
+-  ~さん (san): Saudara / Bapak / Ibu Akhiran untuk mengekspresikan kesopanan di belakang nama orang
+-  ~ちゃん (chan): Panggilan untuk anak laki-laki dan perempuan yang lebih muda
+-  じん (jin): Orang ~ (Akhiran untuk menyatakan warga negara)
+-  せんせい (sensei): Guru / Dosen (tidak dipakai untuk menyebutkan pekerjaan sendiri)
+-  きよし (kiyoshi): Guru / Dosen
+-  がくせい (gakusei): Mahasiswa
+-  かいしゃいん (kaishain): Karyawan perusahaan
+-  しゃいん (shain): Penyebutan karyawan perusahaan yang biasanya digunakan untuk dibarengi dengan nama perusahaan, misalnya IMC の しゃいん (Karyawan perusahaan IMC)
+-  きんこういん (kinkouin): Pegawai bank
+-  いしゃ (isha): Dokter
+-  けんきょうしゃ (kenkyousha): Peneliti
+-  だいがく (daigaku): Universitas
+-  びょういん (byouin): Rumah sakit
+-  だれ （どなた）(dare (donata)): Siapa (donata adalah bentuk formal)
+-  なんさい （おいくつ）(nansai (oikutsu)): Umur berapa (oikutsu adalah bentuk formal)
+-  はい (hai): Ya
+-  いいえ (iie): Tidak / bukan
+-  おなまえは (onamaewa): Siapa namanya?
+-  はじみまして (hajimi mashite): Perkenalkan (ucapan salam waktu berkenalan)
+-  こちらは （。。。） さん-です (kochirawa .... san-desu): Ini saudara ....
