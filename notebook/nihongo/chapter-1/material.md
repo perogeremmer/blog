@@ -20,7 +20,7 @@ Contoh:
 
 - わたしは きんこういん **です** (watashiwa kinkouin **desu**)
   - Saya adalah pegawai bank
-- フデャさんは せんせい です (fudya sanwa sensei desu)
+- フデャさんは せんせい **です** (fudya sanwa sensei desu)
   - Saudara Hudya adalah seorang dosen
 
 # Kata Benda は (Ha) dan Kata Benda じゃ（では）ありません (ja (dewa) arimasen)
@@ -29,9 +29,9 @@ Kata じゃ (ja) merupakan bentuk negatif dari です (desu).
 
 Contoh:
 
-- わたしは きよし じゃ ありません (watashiwa kiyoshi ja arimasen)
+- わたしは きよし **じゃ ありません** (watashiwa kiyoshi **ja arimasen**)
   - Saya bukan seorang dosen
-- フデャさんは せんせい では ありません (fudyasanwa sensei dewa arimaseng)
+- フデャさんは せんせい **では ありません** (fudyasanwa sensei **dewa arimasen**)
   - Saudara Hudya bukan seorang dosen
 
 # Kata Benda は (Ha) dan Kata Benda ですか (desuka)
@@ -40,14 +40,14 @@ Kata か (ka) menunjukkan kalimat tanya.
 
 Contoh:
 
-- フデャさんは がくせい ですか。(fudyasanwa gakusei desuka)
+- フデャさんは がくせい **ですか。**(fudyasanwa gakusei **desuka**)
   - Apakah Saudara Hudya adalah seorang mahasiswa?
 - いいえ、 がくせい じゃ ありません (iie, gakusei ja arimasen)
   - Bukan, dia bukan mahasiswa.
 
 Contoh:
 
-- フデャさんは せんせい ですか。(fudyasanwa sensei desuka)
+- フデャさんは せんせい **ですか。**(fudyasanwa sensei **desuka**)
   - Apakah Saudara Hudya adalah seorang dosen?
 - はい、 せんせい です (hai, sensei desu)
   - Iya, dia seorang dosen.
