@@ -1,4 +1,4 @@
-# Kata Benda は (ha) dan Kata Benda です (desu)
+# Kata benda は (ha) dan Kata benda です (desu)
 
 ## Partikel は (ha)
 
@@ -23,7 +23,7 @@ Contoh:
 - フデャさんは せんせい **です** (fudya sanwa sensei **desu**)
   - Saudara Hudya adalah seorang dosen
 
-# Kata Benda は (Ha) dan Kata Benda じゃ（では）ありません (ja (dewa) arimasen)
+# Kata benda は (Ha) dan Kata benda じゃ（では）ありません (ja (dewa) arimasen)
 
 Kata じゃ (ja) merupakan bentuk negatif dari です (desu).
 
@@ -34,7 +34,7 @@ Contoh:
 - フデャさんは せんせい **では ありません** (fudyasanwa sensei **dewa arimasen**)
   - Saudara Hudya bukan seorang dosen
 
-# Kata Benda は (Ha) dan Kata Benda ですか (desuka)
+# Kata benda は (Ha) dan Kata benda ですか (desuka)
 
 Kata か (ka) menunjukkan kalimat tanya.
 
@@ -51,3 +51,23 @@ Contoh:
   - Apakah Saudara Hudya adalah seorang dosen?
 - はい、 せんせい です (hai, sensei desu)
   - Iya, dia seorang dosen.
+
+# Kata benda も (mo)
+
+Kata も (mo) digunakan untuk menyatakan apakah kalimat pertama dianggap sama dengan kalimat berikutnya.
+
+Contoh:
+
+- フデャさんは せんせい です。バグスさんも せんせい です。
+  - (fudya sanwa sensei desu. bagusu sanmo sensei desu)
+  - Saudara Hudya adalah dosen, Saudara Bagus juga seorang dosen.
+
+# Kata benda の (no)
+
+Apabila kata benda pertama di depan menerangkan kepemilikan dari kata benda dua dibelakangnya, maka kedua kata tersebut disambungkan dengan の (no).
+
+Contoh:
+
+- フデャさんは IMC の しゃいんです
+  - (fudya sanwa IMC no shain desu)
+  - Saudara Hudya adalah pegawai perusahaan IMC
